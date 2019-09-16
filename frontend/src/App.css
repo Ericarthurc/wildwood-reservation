@@ -1,0 +1,102 @@
+* {
+  font-family: 'Lato';
+  font-weight: 700;
+  color: #565656;
+  /* background-color: #EFEFEF; */
+}
+
+p {
+  font-size: 18px;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #659DBD;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/*
+#D7CEC7 GRAIN
+#565656 BLACKBOARD
+#76323F OXBLOOD
+#C09F80 TAN
+*/
+
+.myButton {
+  background-color: #C09F80;
+  -moz-border-radius: 42px;
+  -webkit-border-radius: 42px;
+  border-radius: 8px;
+  border: 2px solid #D7CEC7;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  /* font-family: 'Open Sans'; */
+  font-size: 16px;
+  padding: 6px 15px;
+  text-decoration: none;
+}
+
+.myButton:hover {
+  background-color: #D7CEC7;
+  border: 2px solid #C09F80;
+}
+
+.myButton:active {
+  position: relative;
+  top: 1px;
+}
+
+.myButton:focus {
+  outline: 0;
+}
+
+.topContainer {
+  padding-top: 30px;
+}
+
+.topBar {
+  background-color: #76323F;
+  border-bottom: 2px solid rgb(167, 70, 88);
+}
+
+.form-control:focus {
+  background-color: rgb(255, 255, 255);
+  border-color: rgb(126, 194, 233);
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgb(126, 194, 233);
+}
+
+.form-control {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
