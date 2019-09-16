@@ -1,4 +1,5 @@
 const express = require('express');
+require('./db/mongoose')
 const chalk = require('chalk');
 const history = require('connect-history-api-fallback');
 const path = require('path');
