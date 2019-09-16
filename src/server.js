@@ -1,5 +1,4 @@
 const express = require('express')
-const request = require('request')
 const chalk = require('chalk')
 const history = require('connect-history-api-fallback')
 const path = require('path')
