@@ -22,7 +22,7 @@ class App extends React.Component {
     }
   }
   handlerDataNumGet() {
-    axios.get('http://192.168.1.18:3000/api/dataNum')
+    axios.get('/api/dataNum')
       .then(response => {
         console.log(response.data[0])
         this.setState(() => {
@@ -35,7 +35,7 @@ class App extends React.Component {
       })
   }
   handlerRandomNumGet() {
-    axios.get('http://192.168.1.18:3000/api/randomNum')
+    axios.get('/api/randomNum')
       .then(response => {
         console.log(response.data)
         this.setState(() => {
@@ -65,7 +65,7 @@ class App extends React.Component {
       }
     }, () => {
       axios
-        .post('http://192.168.1.18:3000/api/test',
+        .post('/api/test',
           [{ 'form1': this.state.form1 }, { 'form2': this.state.form2 }, { 'form3': this.state.form3 }, { 'form4': this.state.form4 }])
         .then(response => { console.log(response.data) })
     })

@@ -1,5 +1,5 @@
 const express = require('express');
-require('./db/mongoose')
+// require('./db/mongoose')
 const chalk = require('chalk');
 const history = require('connect-history-api-fallback');
 const path = require('path');
@@ -23,7 +23,7 @@ app.get('/api/randomNum', (req, res) => {
     res.send({ 'number': randomNum })
 });
 
-app.get('/', function (req, res) {
+app.get('*', function (req, res) {
     res.render(path.join('../frontend/build/index.html'))
 });
 
