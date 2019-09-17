@@ -11,16 +11,16 @@ const morgan = require('morgan');
 
 const app = express();
 const port = process.env.PORT || 3000;
-const staticFileMiddleware = express.static(path.join('./frontend/build'));
-app.use(staticFileMiddleware);
-app.use(history());
-app.use(cors());
-app.use(staticFileMiddleware);
+app.use(express.static(path.join('./frontend/build')));
+app.use(userRouter)
+app.use(serviceRouter)
+// app.use(staticFileMiddleware);
+// app.use(history());
+// app.use(cors());
+// app.use(staticFileMiddleware);
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(morgan('combined'));
-app.use(userRouter)
-app.use(serviceRouter)
 
 app.get('/api/randomNum', (req, res) => {
     const randomNum = Math.floor(Math.random() * 100) + 1
@@ -28,9 +28,13 @@ app.get('/api/randomNum', (req, res) => {
     res.send({ 'number': randomNum })
 });
 
-app.get('*', function (req, res) {
+app.get('/', (req, res) => {
     res.render(path.join('../frontend/build/index.html'))
 });
+
+app.get('*', (req, res) => {
+    res.send({ error: '404' })
+})
 
 if (require.main === module) {
     app.listen(port, () => console.log(chalk.blue(`Server started on port ${port}!`)))

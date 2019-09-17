@@ -4,12 +4,13 @@ const validator = require('validator')
 const Service = mongoose.model('Service', {
     serviceName: {
         type: String,
-        require: true,
-        trim: true
+        required: true,
+        trim: true,
+        unique: true
     },
     serviceSeats: {
         type: Number,
-        require: true,
+        required: true,
         trim: true,
         default: 500,
         validate(value) {

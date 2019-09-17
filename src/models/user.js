@@ -4,7 +4,7 @@ const validator = require('validator')
 const User = mongoose.model('User', {
     name: {
         type: String,
-        require: true,
+        required: true,
         trim: true
     },
     email: {
@@ -21,12 +21,12 @@ const User = mongoose.model('User', {
     },
     service: {
         type: String,
-        require: true,
+        required: true,
         trim: true
     },
     seats: {
         type: Number,
-        require: true,
+        required: true,
         validate(value) {
             if (value < 0 && value > 10) {
                 throw new Error('Must be greater than 0 but less than 10')
