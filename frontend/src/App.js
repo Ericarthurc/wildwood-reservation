@@ -1,16 +1,15 @@
 import React from 'react';
 import './App.css';
 import axios from "axios";
-import { Container, Row, Col, Navbar, Form, FormControl, Nav, NavDropdown, Button } from 'react-bootstrap';
+import { Container, Row, Col, Navbar, Form } from 'react-bootstrap';
 
 class App extends React.Component {
   constructor(props) {
     super(props)
-    this.handlerRandomNumGet = this.handlerRandomNumGet.bind(this)
     this.handlerDataPost = this.handlerDataPost.bind(this)
     this.handlerDataNumGet = this.handlerDataNumGet.bind(this)
     this.state = {
-      randomNum: 0,
+      // randomNum: 0,
       number1: 0,
       number2: 0,
       number3: 0,
@@ -22,32 +21,32 @@ class App extends React.Component {
     }
   }
   handlerDataNumGet() {
-    axios.get('/api/dataNum')
-      .then(response => {
-        console.log(response.data[0])
-        this.setState(() => {
-          return {
-            number1: response.data[0].number1,
-            number2: response.data[0].number2,
-            number3: response.data[0].number3
-          }
-        })
-      })
-  }
-  handlerRandomNumGet() {
-    axios.get('/api/randomNum')
+    axios.get('/services')
       .then(response => {
         console.log(response.data)
         this.setState(() => {
           return {
-            randomNum: response.data.number
+            number1: response.data[0].serviceSeats,
+            number2: response.data[1].serviceSeats,
+            number3: response.data[2].serviceSeats
           }
         })
       })
-      .catch(error => {
-        console.log(error)
-      })
   }
+  // handlerRandomNumGet() {
+  //   axios.get('/api/randomNum')
+  //     .then(response => {
+  //       console.log(response.data)
+  //       this.setState(() => {
+  //         return {
+  //           randomNum: response.data.number
+  //         }
+  //       })
+  //     })
+  //     .catch(error => {
+  //       console.log(error)
+  //     })
+  // }
   handlerDataPost(e) {
     e.preventDefault();
     // e.target.elements.form1.value = ''
@@ -85,37 +84,33 @@ class App extends React.Component {
           </Row>
           <Row>
             <Col></Col>
-            <Col xs={8}>
-              <h5>Random Number from Express: {this.state.randomNum}</h5>
-              <button className="myButton" onClick={this.handlerRandomNumGet}>New Number!</button>
-            </Col>
+            <Col xs={8}></Col>
             <Col></Col>
           </Row>
           <Row>
             <Col>
-              <p>Number1:</p>
+              <p>Service1:</p>
               <p>{this.state.number1}</p>
             </Col>
             <Col>
-              <p>Number2:</p>
+              <p>Service2:</p>
               <p>{this.state.number2}</p>
             </Col>
             <Col>
-              <p>Number3:</p>
+              <p>Service3:</p>
               <p>{this.state.number3}</p>
             </Col>
           </Row>
           <Row>
             <Col></Col>
             <Col xs={8}>
-              <button className="myButton" onClick={this.handlerDataNumGet}>Ask for JSON</button>
               <Form onSubmit={this.handlerDataPost}>
                 <Form.Group>
                   <Form.Control type="text" name="form1" placeholder="Place Input:"></Form.Control>
                   <Form.Control type="text" name="form2" placeholder="Place Input:"></Form.Control>
                   <Form.Control type="text" name="form3" placeholder="Place Input:"></Form.Control>
                   <Form.Control type="text" name="form4" placeholder="Place Input:"></Form.Control>
-                  <button className="myButton" >Send Data!</button>
+                  <button className="myButton" >Submit</button>
                 </Form.Group>
               </Form>
             </Col>
@@ -126,17 +121,16 @@ class App extends React.Component {
     )
   }
   componentDidMount() {
-    this.handlerRandomNumGet()
-    // this.handlerDataNumGet()
+    this.handlerDataNumGet()
   }
 }
 
-const Header = (props) => {
-  return (
-    <div>
-      <h1>{props.title}</h1>
-    </div>
-  )
-}
+// const Header = (props) => {
+//   return (
+//     <div>
+//       <h1>{props.title}</h1>
+//     </div>
+//   )
+// }
 
 export default App;
