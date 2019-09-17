@@ -1,5 +1,8 @@
 const express = require('express');
-// require('./db/mongoose')
+require('./db/mongoose')
+const userRouter = require('./routers/user')
+const serviceRouter = require('./routers/service')
+
 const chalk = require('chalk');
 const history = require('connect-history-api-fallback');
 const path = require('path');
@@ -16,6 +19,8 @@ app.use(staticFileMiddleware);
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(morgan('combined'));
+app.use(userRouter)
+app.use(serviceRouter)
 
 app.get('/api/randomNum', (req, res) => {
     const randomNum = Math.floor(Math.random() * 100) + 1
