@@ -7,7 +7,6 @@ const chalk = require('chalk');
 const history = require('connect-history-api-fallback');
 const path = require('path');
 const cors = require('cors');
-const morgan = require('morgan');
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -20,13 +19,12 @@ app.use(serviceRouter)
 // app.use(staticFileMiddleware);
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(morgan('combined'));
 
-app.get('/api/randomNum', (req, res) => {
-    const randomNum = Math.floor(Math.random() * 100) + 1
-    console.log(chalk.magenta(randomNum))
-    res.send({ 'number': randomNum })
-});
+// app.get('/api/randomNum', (req, res) => {
+//     const randomNum = Math.floor(Math.random() * 100) + 1
+//     console.log(chalk.magenta(randomNum))
+//     res.send({ 'number': randomNum })
+// });
 
 app.get('/', (req, res) => {
     res.render(path.join('../frontend/build/index.html'))
