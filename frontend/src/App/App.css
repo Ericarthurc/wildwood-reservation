@@ -95,7 +95,7 @@ p {
 
 .form-control:focus {
   background-color: rgb(255, 255, 255);
-  border-color: #76323F;
+  border-color: rgb(167, 70, 88);
   outline: 0;
   box-shadow: 0 0 0 0.2rem #76323F;
 }
