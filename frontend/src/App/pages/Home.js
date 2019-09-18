@@ -111,7 +111,7 @@ class Home extends Component {
                   <Form.Control type="text" name="form2" placeholder="Place Input:"></Form.Control>
                   <Form.Control type="text" name="form3" placeholder="Place Input:"></Form.Control>
                   <Form.Control type="text" name="form4" placeholder="Place Input:"></Form.Control>
-                  <button className="myButton" >Submit</button>
+                  <button className="myButton">Submit</button>
                 </Form.Group>
               </Form>
             </Col>

@@ -1,5 +1,6 @@
 const express = require('express')
 const Service = require('../models/service')
+const auth = require('../middleware/auth')
 const router = new express.Router()
 
 router.post('/services', async (req, res) => {
@@ -13,7 +14,7 @@ router.post('/services', async (req, res) => {
     }
 })
 
-router.get('/services', async (req, res) => {
+router.get('/services', auth, async (req, res) => {
     try {
         const services = await Service.find({})
         res.send(services)
