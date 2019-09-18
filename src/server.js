@@ -10,13 +10,12 @@ const cors = require('cors');
 
 const app = express();
 const port = process.env.PORT || 3000;
-app.use(express.static(path.join('./frontend/build')));
 app.use(userRouter)
 app.use(serviceRouter)
-// app.use(staticFileMiddleware);
-// app.use(history());
-// app.use(cors());
-// app.use(staticFileMiddleware);
+app.use(express.static('frontend/build'));
+app.use(history());
+app.use(cors());
+app.use(express.static('frontend/build'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
@@ -25,10 +24,6 @@ app.use(express.json());
 //     console.log(chalk.magenta(randomNum))
 //     res.send({ 'number': randomNum })
 // });
-
-app.get('/', (req, res) => {
-    res.render(path.join('../frontend/build/index.html'))
-});
 
 app.get('*', (req, res) => {
     res.send({ error: '404' })

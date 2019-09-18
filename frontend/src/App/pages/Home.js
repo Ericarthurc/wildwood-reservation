@@ -1,9 +1,10 @@
-import React from 'react';
-import './App.css';
+import React, { Component } from 'react';
+// import { Link } from 'react-router-dom';
+import '../App.css';
 import axios from "axios";
 import { Container, Row, Col, Navbar, Form } from 'react-bootstrap';
 
-class App extends React.Component {
+class Home extends Component {
   constructor(props) {
     super(props)
     this.handlerDataPost = this.handlerDataPost.bind(this)
@@ -133,4 +134,4 @@ class App extends React.Component {
 //   )
 // }
 
-export default App;
+export default Home;

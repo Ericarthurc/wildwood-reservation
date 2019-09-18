@@ -9,6 +9,10 @@ p {
   font-size: 18px;
 }
 
+.pic {
+  width: 400px;
+}
+
 .App {
   text-align: center;
 }
