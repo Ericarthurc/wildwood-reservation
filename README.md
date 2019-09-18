@@ -20,6 +20,6 @@ New code tools:
 - Mongoose schema
 - Express backend
 - React frontend
-- Nodejs bring it all together
+- Nodejs bringing it all together
 - SMTP integration
 - Bootstrap 4 standards (some custom css)
