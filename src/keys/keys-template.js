@@ -1,9 +1,11 @@
 // keys template
+// file should be renamed to 'keys.js'
 // adminAuth: key for authenticating middleware admin routes
+
 
 const keys = {
     adminLogin: {
-        email: "PLACEHOLDER",
+        username: "PLACEHOLDER",
         password: "PLACEHOLDER",
         secert: "PLACEHOLDER"
     }
