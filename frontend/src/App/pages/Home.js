@@ -8,17 +8,16 @@ class Home extends Component {
   constructor(props) {
     super(props)
     this.handlerDataPost = this.handlerDataPost.bind(this)
-    this.handlerDataNumGet = this.handlerDataNumGet.bind(this)
+    this.servicesGetHandler = this.servicesGetHandler.bind(this)
     this.radioHandler = this.radioHandler.bind(this)
     this.state = {
-      number1: 0,
-      number2: 0,
-      number3: 0,
+      serviceOne: 0,
+      serviceTwo: 0,
+      serviceThree: 0,
       form1: '',
       form2: '',
       form3: '',
       form4: '',
-
     }
   }
   setStateAsync(state) {
@@ -26,17 +25,19 @@ class Home extends Component {
       this.setState(state, resolve)
     });
   }
-  handlerDataNumGet() {
-    axios.get('/services')
-      .then(response => {
-        this.setState(() => {
-          return {
-            number1: response.data[0].serviceSeats,
-            number2: response.data[1].serviceSeats,
-            number3: response.data[2].serviceSeats
-          }
-        })
+  async servicesGetHandler() {
+    try {
+      const res = await axios.get('/services')
+      await this.setStateAsync(() => {
+        return {
+          serviceOne: res.data[0].serviceSeats,
+          serviceTwo: res.data[1].serviceSeats,
+          serviceThree: res.data[2].serviceSeats
+        }
       })
+    } catch (e) {
+
+    }
   }
   async handlerDataPost(e) {
     e.preventDefault();
@@ -70,7 +71,7 @@ class Home extends Component {
   }
   render() {
     const style1 = 'serviceIcon'
-    const style2 = 'serviceIconsClicked'
+    const style2 = 'serviceIconClicked'
     return (
       <div className="App">
         <Navbar variant="light" className="topBar">
@@ -93,26 +94,26 @@ class Home extends Component {
             <Col>
               <div>
                 <p>8:00am</p>
-                <div id="" className="serviceIcon"><ion-icon name="cloudy-night"></ion-icon></div>
+                <div className={this.state.form1 === 'First Service' ? 'serviceIconClicked' : 'serviceIcon'}><ion-icon name="cloudy"></ion-icon></div>
                 <Form.Check type="radio" value="First Service" onChange={this.radioHandler} checked={this.state.form1 === 'First Service'} />
               </div>
-              <p>{this.state.number1}</p>
+              <p>{this.state.serviceOne}</p>
             </Col>
             <Col>
               <div>
                 <p>9:45am</p>
-                <div id="" className={style1}><ion-icon name="cloudy"></ion-icon></div>
+                <div className={this.state.form1 === 'Second Service' ? 'serviceIconClicked' : 'serviceIcon'}><ion-icon name="cloudy"></ion-icon></div>
                 <Form.Check type="radio" value="Second Service" onChange={this.radioHandler} checked={this.state.form1 === 'Second Service'} />
               </div>
-              <p>{this.state.number2}</p>
+              <p>{this.state.serviceTwo}</p>
             </Col>
             <Col>
               <div>
                 <p>11:30am</p>
-                <div id="" className="serviceIcon"><ion-icon name="sunny"></ion-icon></div>
+                <div className={this.state.form1 === 'Third Service' ? 'serviceIconClicked' : 'serviceIcon'}><ion-icon name="cloudy"></ion-icon></div>
                 <Form.Check type="radio" value="Third Service" onChange={this.radioHandler} checked={this.state.form1 === 'Third Service'} />
               </div>
-              <p>{this.state.number3}</p>
+              <p>{this.state.serviceThree}</p>
             </Col>
             <Col lg={2}></Col>
           </Row>
@@ -136,7 +137,7 @@ class Home extends Component {
     )
   }
   componentDidMount() {
-    this.handlerDataNumGet()
+    this.servicesGetHandler()
   }
 }
 

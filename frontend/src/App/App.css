@@ -20,9 +20,13 @@ ion-icon {
 
 .serviceIcon {
   color: #C09F80;
+  -moz-transition: all 0.2s ease-in;
+  -o-transition: all 0.2s ease-in;
+  -webkit-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
 }
 
-.serviceIconsClicked {
+.serviceIconClicked {
   color: #76323F;
   -moz-transition: all 0.2s ease-in;
   -o-transition: all 0.2s ease-in;
