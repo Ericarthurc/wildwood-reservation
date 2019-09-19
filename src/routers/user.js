@@ -6,13 +6,17 @@ const router = new express.Router()
 router.use(express.json());
 
 router.post('/users', async (req, res) => {
+    console.log(req.body)
     const user = new User(req.body)
 
     try {
         await user.save()
         res.status(201).send(user)
     } catch (e) {
-        res.status(400).send('Express Error from Ericarthurc', e)
+        if (e.code === 11000) {
+            return res.status(422).send({ error: 'Email already exists!'})
+        }
+        res.status(400).send(e)
     }
 })
 

@@ -3,7 +3,7 @@ const Service = require('../models/service')
 const auth = require('../middleware/auth')
 const router = new express.Router()
 
-router.post('/services', async (req, res) => {
+router.post('/services', auth, async (req, res) => {
     const service = new Service(req.body)
 
     try {
@@ -14,7 +14,7 @@ router.post('/services', async (req, res) => {
     }
 })
 
-router.get('/services', auth, async (req, res) => {
+router.get('/services', async (req, res) => {
     try {
         const services = await Service.find({})
         res.send(services)

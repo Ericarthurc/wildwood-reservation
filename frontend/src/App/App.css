@@ -5,8 +5,19 @@
   /* background-color: #EFEFEF; */
 }
 
+
 p {
   font-size: 18px;
+}
+
+.serviceIcon {
+  color: rgb(83, 47, 61);
+  font-weight: bold;
+}
+
+ion-icon {
+  font-size: 80px;
+  /* color: rgb(00, 200, 100); */
 }
 
 .header1 {

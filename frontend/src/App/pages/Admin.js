@@ -87,19 +87,19 @@ class Login extends Component {
                     <Col></Col>
                 </Row>
                 <Row>
-                    <Col xs={2} md={4} lg={5}></Col>
-                    <Col xs={8} md={4} lg={2}>
+                    <Col xs={2} md={4} lg={4} xl={5}></Col>
+                    <Col xs={8} md={4} lg={4} xl={2}>
                         {(this.state.status) && <p>{this.state.status}</p>}
                         <Form onSubmit={this.handlerLogin}>
                             <Form.Group>
                                 <Form.Control type="text" name="form1" placeholder="Username:"></Form.Control>
                                 <Form.Control type="password" name="form2" placeholder="Password:"></Form.Control>
-                                <Form.Control type="text" name="form3" placeholder="Secret:"></Form.Control>
+                                <Form.Control type="password" name="form3" placeholder="Secret:"></Form.Control>
                                 <button className="myButton">Submit</button>
                             </Form.Group>
                         </Form>
                     </Col>
-                    <Col xs={2} md={4} lg={5}></Col>
+                    <Col xs={2} md={4} lg={4} xl={5}></Col>
                 </Row>
             </div>
         )
