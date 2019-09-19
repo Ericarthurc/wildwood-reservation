@@ -71,9 +71,6 @@ class Home extends Component {
     })
   }
   render() {
-    let style1 = () => 'serviceIcon'
-    let style2 = () => 'serviceIcon2'
-
     return (
       <div className="App">
         <Navbar variant="light" className="topBar">
@@ -95,21 +92,21 @@ class Home extends Component {
             <Col>
               <div>
                 <p>Service1</p>
-                <ion-icon className="serviceIcon" name="cloudy-night"></ion-icon>
+                <div className="serviceIcon"><ion-icon name="cloudy-night"></ion-icon></div>
               </div>
               <p>{this.state.number1}</p>
             </Col>
             <Col>
               <div>
                 <p>Service2</p>
-                <ion-icon name="cloudy"></ion-icon>
+                <div className="serviceIcon"><ion-icon name="cloudy"></ion-icon></div>
               </div>
               <p>{this.state.number2}</p>
             </Col>
             <Col>
               <div>
                 <p>Service3</p>
-                <ion-icon name="sunny"></ion-icon>
+                <div className="serviceIcon"><ion-icon name="sunny"></ion-icon></div>
               </div>
               <p>{this.state.number3}</p>
             </Col>
