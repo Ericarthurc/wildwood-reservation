@@ -9,8 +9,8 @@ class Home extends Component {
     super(props)
     this.handlerDataPost = this.handlerDataPost.bind(this)
     this.handlerDataNumGet = this.handlerDataNumGet.bind(this)
+    this.radioHandler = this.radioHandler.bind(this)
     this.state = {
-      // randomNum: 0,
       number1: 0,
       number2: 0,
       number3: 0,
@@ -21,10 +21,14 @@ class Home extends Component {
 
     }
   }
+  setStateAsync(state) {
+    return new Promise((resolve) => {
+      this.setState(state, resolve)
+    });
+  }
   handlerDataNumGet() {
     axios.get('/services')
       .then(response => {
-        console.log(response.data)
         this.setState(() => {
           return {
             number1: response.data[0].serviceSeats,
@@ -34,43 +38,39 @@ class Home extends Component {
         })
       })
   }
-  // handlerRandomNumGet() {
-  //   axios.get('/api/randomNum')
-  //     .then(response => {
-  //       console.log(response.data)
-  //       this.setState(() => {
-  //         return {
-  //           randomNum: response.data.number
-  //         }
-  //       })
-  //     })
-  //     .catch(error => {
-  //       console.log(error)
-  //     })
-  // }
-  handlerDataPost(e) {
+  async handlerDataPost(e) {
     e.preventDefault();
     // e.target.elements.form1.value = ''
-    let form1 = e.target.elements.form1.value
     let form2 = e.target.elements.form2.value
     let form3 = e.target.elements.form3.value
     let form4 = e.target.elements.form4.value
+    try {
+      await this.setStateAsync(() => { return { form2: form2, form3: form3, form4: form4, } })
+      const res = await axios.post('/users',
+        { 'service': this.state.form1, 'seats': this.state.form2, 'name': this.state.form3, 'email': this.state.form4 })
+      console.log("weha", res.data)
+    } catch (e) {
+      console.log('Status:', e.response.status)
+      if (e.response.status === 400) {
+        console.log("400 ERROR")
+      } else if (e.response.status === 422) {
+        console.log("422 ERROR")
+      } else {
+        console.log("You goofed somehow")
+      }
+    }
+  }
+  radioHandler(e) {
+    let form1 = e.target.value
     this.setState(() => {
       return {
-        form1: form1,
-        form2: form2,
-        form3: form3,
-        form4: form4,
-
+        form1: form1
       }
-    }, () => {
-      axios
-        .post('/api/test',
-          [{ 'form1': this.state.form1 }, { 'form2': this.state.form2 }, { 'form3': this.state.form3 }, { 'form4': this.state.form4 }])
-        .then(response => { console.log(response.data) })
     })
   }
   render() {
+    const style1 = 'serviceIcon'
+    const style2 = 'serviceIconsClicked'
     return (
       <div className="App">
         <Navbar variant="light" className="topBar">
@@ -89,37 +89,42 @@ class Home extends Component {
             <Col></Col>
           </Row>
           <Row>
+            <Col lg={2}></Col>
             <Col>
               <div>
-                <p>Service1</p>
-                <div className="serviceIcon"><ion-icon name="cloudy-night"></ion-icon></div>
+                <p>8:00am</p>
+                <div id="" className="serviceIcon"><ion-icon name="cloudy-night"></ion-icon></div>
+                <Form.Check type="radio" value="First Service" onChange={this.radioHandler} checked={this.state.form1 === 'First Service'} />
               </div>
               <p>{this.state.number1}</p>
             </Col>
             <Col>
               <div>
-                <p>Service2</p>
-                <div className="serviceIcon"><ion-icon name="cloudy"></ion-icon></div>
+                <p>9:45am</p>
+                <div id="" className={style1}><ion-icon name="cloudy"></ion-icon></div>
+                <Form.Check type="radio" value="Second Service" onChange={this.radioHandler} checked={this.state.form1 === 'Second Service'} />
               </div>
               <p>{this.state.number2}</p>
             </Col>
             <Col>
               <div>
-                <p>Service3</p>
-                <div className="serviceIcon"><ion-icon name="sunny"></ion-icon></div>
+                <p>11:30am</p>
+                <div id="" className="serviceIcon"><ion-icon name="sunny"></ion-icon></div>
+                <Form.Check type="radio" value="Third Service" onChange={this.radioHandler} checked={this.state.form1 === 'Third Service'} />
               </div>
               <p>{this.state.number3}</p>
             </Col>
+            <Col lg={2}></Col>
           </Row>
           <Row>
             <Col></Col>
-            <Col xs={8}>
+            <Col xs={8} lg={6}>
               <Form onSubmit={this.handlerDataPost}>
                 <Form.Group>
-                  <Form.Control type="text" name="form1" placeholder="Place Input:"></Form.Control>
-                  <Form.Control type="text" name="form2" placeholder="Place Input:"></Form.Control>
-                  <Form.Control type="text" name="form3" placeholder="Place Input:"></Form.Control>
-                  <Form.Control type="text" name="form4" placeholder="Place Input:"></Form.Control>
+                  <Form.Control type="number" min="1" max="10" name="form2" placeholder="How many seats 1-10:"></Form.Control>
+                  <Form.Control type="text" name="form3" placeholder="Enter name:"></Form.Control>
+                  <Form.Control type="email" name="form4" placeholder="Enter email:"></Form.Control>
+                  {/*<Form.Control type="text" name="form4" placeholder="Place Input:"></Form.Control>*/}
                   <button className="myButton">Submit</button>
                 </Form.Group>
               </Form>
@@ -127,20 +132,12 @@ class Home extends Component {
             <Col></Col>
           </Row>
         </Container>
-      </div>
+      </div >
     )
   }
   componentDidMount() {
     this.handlerDataNumGet()
   }
 }
-
-// const Header = (props) => {
-//   return (
-//     <div>
-//       <h1>{props.title}</h1>
-//     </div>
-//   )
-// }
 
 export default Home;

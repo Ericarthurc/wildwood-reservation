@@ -20,12 +20,6 @@ app.use(express.static('./frontend/build'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// app.get('/api/randomNum', (req, res) => {
-//     const randomNum = Math.floor(Math.random() * 100) + 1
-//     console.log(chalk.magenta(randomNum))
-//     res.send({ 'number': randomNum })
-// });
-
 app.get('*', (req, res) => {
     res.send({ error: '404' })
 })

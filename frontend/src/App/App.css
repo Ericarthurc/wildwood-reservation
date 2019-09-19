@@ -19,7 +19,15 @@ ion-icon {
 }
 
 .serviceIcon {
-  color: rgb(83, 47, 61);
+  color: #C09F80;
+}
+
+.serviceIconsClicked {
+  color: #76323F;
+  -moz-transition: all 0.2s ease-in;
+  -o-transition: all 0.2s ease-in;
+  -webkit-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
 }
 
 .header1 {
