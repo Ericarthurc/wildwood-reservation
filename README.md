@@ -16,10 +16,10 @@ New code goals:
 The purpose of the rewrite is to bring the code to 2019 standards. I want a project that I understand and that I could teach to someone else in the future. A web app that is easily deployable and uses modern friendly tools.
 
 New code tools:
-- MERN Stack
+- MEVN Stack
 - Mongoose schema
 - Express backend
-- React frontend
+- Vuejs frontend
 - Nodejs bringing it all together
 - SMTP integration
 - Bootstrap 4 standards (some custom css)
