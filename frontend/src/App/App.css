@@ -6,6 +6,10 @@ body {
   font-size: 16px;
 }
 
+#form {
+  padding-top: 30px;
+}
+
 
 p {
   font-size: 18px;
