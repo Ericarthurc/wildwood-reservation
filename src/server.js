@@ -27,3 +27,6 @@ app.get('*', (req, res) => {
 if (require.main === module) {
     app.listen(port, () => console.log(chalk.blue(`Server started on port ${port}!`)))
 };
+
+
+// mongod --dbpath=/Users/ericarthurc/mongodb-data

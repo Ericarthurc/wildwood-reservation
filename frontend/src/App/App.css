@@ -18,6 +18,14 @@ ion-icon {
   /* color: rgb(00, 200, 100); */
 }
 
+.errorStatus {
+  color: red;
+}
+
+.successStatus {
+  color: rgb(00, 200, 100);
+}
+
 .serviceIcon {
   color: #C09F80;
   -moz-transition: all 0.2s ease-in;
