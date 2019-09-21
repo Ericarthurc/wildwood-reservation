@@ -7,19 +7,7 @@ import { Container, Row, Col, Navbar, Form } from 'react-bootstrap';
 const Home = () => {
   return (
     <div className="App">
-      <HomeNavbar></HomeNavbar>
       <ServiceForm></ServiceForm>
-    </div>
-  )
-}
-
-const HomeNavbar = () => {
-  return (
-    <div className="App">
-      <Navbar variant="light" className="topBar">
-        <Navbar.Brand href="#home"></Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-      </Navbar>
     </div>
   )
 }
@@ -29,6 +17,7 @@ const ServiceForm = () => {
   const [serviceTwo, setServiceTwo] = useState([])
   const [serviceThree, setServiceThree] = useState([])
   const [radioCheck, setRadioCheck] = useState('')
+  const [radioID, setRadioID] = useState()
   const [statusMessage, setStatusMessage] = useState()
 
   const getServices = async () => {
@@ -42,33 +31,35 @@ const ServiceForm = () => {
     }
   }
 
-  const radioHandler = (e) => {
+  const radioHandler = (e, id) => {
     setRadioCheck(e.target.value)
+    setRadioID(id)
   }
 
   const formHandler = async (e) => {
     e.preventDefault()
+    console.log(e.target.elements)
     let formObj = {}
     for (let i = 3; i < (e.target.elements.length - 1); i++) {
       formObj[i] = e.target.elements[i].value
       e.target.elements[i].value = ''
     }
-    console.log(formObj)
     setRadioCheck('')
     try {
-      const res = await axios.post('/users',
+      await axios.post('/users',
         { 'service': radioCheck, 'seats': formObj[3], 'name': formObj[4], 'email': formObj[5] })
+      await axios.patch(`/services/${radioID}`, { 'serviceSeats': formObj[3] })
+      getServices()
       setStatusMessage('Submitted Successfully!')
     } catch (e) {
-      console.log('Status:', e.response.status)
       if (e.response.status === 400) {
-        console.log("400 ERROR")
+        console.log(e)
         setStatusMessage('Invalid Form Input')
       } else if (e.response.status === 422) {
         setStatusMessage('This email has already been used')
-        console.log("422 ERROR")
+        console.log(e)
       } else {
-        console.log("You goofed somehow")
+        console.log(e)
       }
     }
   }
@@ -87,28 +78,28 @@ const ServiceForm = () => {
             <Col>
               <div>
                 <p>8:00am</p>
-                <div className={radioCheck === 'First Service' ? 'serviceIconClicked' : 'serviceIcon'}>
+                <div className={radioCheck === 'ServiceOne' ? 'serviceIconClicked' : 'serviceIcon'}>
                   <ion-icon name="cloudy"></ion-icon>
                 </div>
-                <Form.Check type="radio" value="First Service" onChange={radioHandler} checked={radioCheck === 'First Service'} />
+                <Form.Check type="radio" value="ServiceOne" key={serviceOne._id} onChange={(e) => radioHandler(e, serviceOne._id)} checked={radioCheck === 'ServiceOne'} />
               </div>
               <p key={serviceOne._id}>{serviceOne.serviceSeats}</p>
             </Col>
             <Col>
               <div>
                 <p>9:45am</p>
-                <div className={radioCheck === 'Second Service' ? 'serviceIconClicked' : 'serviceIcon'}><ion-icon name="cloudy"></ion-icon></div>
-                <Form.Check type="radio" value="Second Service" onChange={radioHandler} checked={radioCheck === 'Second Service'} />
+                <div className={radioCheck === 'ServiceTwo' ? 'serviceIconClicked' : 'serviceIcon'}><ion-icon name="cloudy"></ion-icon></div>
+                <Form.Check type="radio" value="ServiceTwo" key={serviceTwo._id} onChange={(e) => radioHandler(e, serviceTwo._id)} checked={radioCheck === 'ServiceTwo'} />
               </div>
               <p key={serviceTwo._id}>{serviceTwo.serviceSeats}</p>
             </Col>
             <Col>
               <div>
                 <p>11:30am</p>
-                <div className={radioCheck === 'Third Service' ? 'serviceIconClicked' : 'serviceIcon'}><ion-icon name="cloudy"></ion-icon></div>
-                <Form.Check type="radio" value="Third Service" onChange={radioHandler} checked={radioCheck === 'Third Service'} />
+                <div className={radioCheck === 'ServiceThree' ? 'serviceIconClicked' : 'serviceIcon'}><ion-icon name="cloudy"></ion-icon></div>
+                <Form.Check type="radio" value="ServiceThree" key={serviceThree._id} onChange={(e) => radioHandler(e, serviceThree._id)} checked={radioCheck === 'ServiceThree'} />
               </div>
-              <p key={serviceTwo._id}>{serviceTwo.serviceSeats}</p>
+              <p key={serviceThree._id}>{serviceThree.serviceSeats}</p>
             </Col>
             <Col lg={2}></Col>
           </Row>

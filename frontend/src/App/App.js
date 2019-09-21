@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import './App.css';
+import { Container, Row, Col, Navbar, Form } from 'react-bootstrap';
 import Home from './pages/Home';
 import Admin from './pages/Admin';
 import ErrorPage from './pages/ErrorPage';
@@ -19,9 +20,15 @@ class App extends Component {
             </div>
         )
         return (
-            <Switch>
-                <App />
-            </Switch>
+            <div>
+                <Navbar>
+                    <Navbar.Brand href="">Wildwood</Navbar.Brand>
+                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                </Navbar>
+                <Switch>
+                    <App />
+                </Switch>
+            </div>
         );
     }
 }

@@ -22,6 +22,26 @@ ion-icon {
   /* color: rgb(00, 200, 100); */
 }
 
+.navbar {
+  background-color: #76323F;
+  border-bottom: 2px solid rgb(167, 70, 88);
+}
+.nav-item {
+  padding-right: 3px;
+}
+.navbar-brand {
+  font-weight: 700;
+  padding-left: 3px;
+}
+
+/* .navbar-light .navbar-brand {
+  color: red;
+}
+
+.navbar-light:hover .navbar-brand:hover {
+  color: red;
+} */
+
 .errorStatus {
   color: red;
 }
@@ -96,11 +116,6 @@ ion-icon {
 
 .topContainer {
   padding-top: 30px;
-}
-
-.topBar {
-  background-color: #76323F;
-  border-bottom: 2px solid rgb(167, 70, 88);
 }
 
 .form-control:focus {
