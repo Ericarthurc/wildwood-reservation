@@ -7,6 +7,8 @@ const chalk = require('chalk')
 
 router.use(express.json());
 
+// LOOK INTO MONGOOSE-TRANSACTIONS
+
 router.post('/forms/services', async (req, res) => {
     console.log(req.body)
     console.log(req.body[0].serviceSeats)
