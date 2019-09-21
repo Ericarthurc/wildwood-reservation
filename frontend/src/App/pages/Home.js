@@ -47,27 +47,47 @@ const ServiceForm = () => {
     }
     try {
       if (radioCheck) {
-        await axios.patch(`/services/${radioID}`, { 'serviceSeats': formObj[3] })
+        await axios.post('/forms/submit', [{ '_id': radioID, 'serviceSeats': formObj[3] },
+        { 'service': radioCheck, 'seats': formObj[3], 'name': formObj[4], 'email': formObj[5] }])
+      } else {
+        setStatusMessage('Invalid Form Input')
       }
-      await axios.post('/users',
-        { 'service': radioCheck, 'seats': formObj[3], 'name': formObj[4], 'email': formObj[5] })
-      getServices()
-      setRadioCheck()
-      setStatusMessage('Submitted Successfully!')
     } catch (e) {
       if (e.response.status === 400) {
-        console.log(e)
         setStatusMessage('Invalid Form Input')
       } else if (e.response.status === 406) {
-        console.log(e)
         setStatusMessage(`The selected service does not have ${formObj[3]} seats available`)
+      } else if (e.response.status === 409) {
+        setStatusMessage('Invalid Form Input')
       } else if (e.response.status === 422) {
         setStatusMessage('This email has already been used')
-        console.log(e)
       } else {
         console.log(e)
       }
     }
+    // try {
+    //   if (radioCheck) {
+    //     await axios.patch(`/services/${radioID}`, { 'serviceSeats': formObj[3] })
+    //   }
+    //   await axios.post('/users',
+    //     { 'service': radioCheck, 'seats': formObj[3], 'name': formObj[4], 'email': formObj[5] })
+    //   getServices()
+    //   setRadioCheck()
+    //   setStatusMessage('Submitted Successfully!')
+    // } catch (e) {
+    //   if (e.response.status === 400) {
+    //     console.log(e)
+    //     setStatusMessage('Invalid Form Input')
+    //   } else if (e.response.status === 406) {
+    //     console.log(e)
+    //     setStatusMessage(`The selected service does not have ${formObj[3]} seats available`)
+    //   } else if (e.response.status === 422) {
+    //     setStatusMessage('This email has already been used')
+    //     console.log(e)
+    //   } else {
+    //     console.log(e)
+    //   }
+    // }
   }
 
   useEffect(() => {

@@ -2,6 +2,7 @@ const express = require('express');
 require('./db/mongoose')
 const userRouter = require('./routers/user')
 const serviceRouter = require('./routers/service')
+const formRouter = require('./routers/form')
 
 const chalk = require('chalk');
 const history = require('connect-history-api-fallback');
@@ -13,6 +14,7 @@ const port = process.env.PORT || 3000;
 app.use(cors());
 app.use(userRouter)
 app.use(serviceRouter)
+app.use(formRouter)
 app.use(express.static('./frontend/build'));
 app.use(history());
 app.use(cors());
