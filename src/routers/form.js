@@ -7,7 +7,7 @@ const chalk = require('chalk')
 
 router.use(express.json());
 
-router.post('/forms/submit', async (req, res) => {
+router.post('/forms/services', async (req, res) => {
     console.log(req.body)
     console.log(req.body[0].serviceSeats)
     const user = new User(req.body[1])

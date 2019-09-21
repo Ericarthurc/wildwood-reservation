@@ -39,17 +39,20 @@ const ServiceForm = () => {
 
   const formHandler = async (e) => {
     e.preventDefault()
-    // console.log(e.target.elements)
     let formObj = {}
     for (let i = 3; i < (e.target.elements.length - 1); i++) {
       formObj[i] = e.target.elements[i].value
       e.target.elements[i].value = ''
     }
     try {
-      if (radioCheck) {
-        await axios.post('/forms/submit', [{ '_id': radioID, 'serviceSeats': formObj[3] },
+      if (radioCheck && formObj[3] && formObj[4] && formObj[5]) {
+        await axios.post('/forms/services', [{ '_id': radioID, 'serviceSeats': formObj[3] },
         { 'service': radioCheck, 'seats': formObj[3], 'name': formObj[4], 'email': formObj[5] }])
+        getServices()
+        setRadioCheck()
+        setStatusMessage('Submitted Successfully!')
       } else {
+        console.log('stopped by frontend')
         setStatusMessage('Invalid Form Input')
       }
     } catch (e) {
@@ -65,29 +68,6 @@ const ServiceForm = () => {
         console.log(e)
       }
     }
-    // try {
-    //   if (radioCheck) {
-    //     await axios.patch(`/services/${radioID}`, { 'serviceSeats': formObj[3] })
-    //   }
-    //   await axios.post('/users',
-    //     { 'service': radioCheck, 'seats': formObj[3], 'name': formObj[4], 'email': formObj[5] })
-    //   getServices()
-    //   setRadioCheck()
-    //   setStatusMessage('Submitted Successfully!')
-    // } catch (e) {
-    //   if (e.response.status === 400) {
-    //     console.log(e)
-    //     setStatusMessage('Invalid Form Input')
-    //   } else if (e.response.status === 406) {
-    //     console.log(e)
-    //     setStatusMessage(`The selected service does not have ${formObj[3]} seats available`)
-    //   } else if (e.response.status === 422) {
-    //     setStatusMessage('This email has already been used')
-    //     console.log(e)
-    //   } else {
-    //     console.log(e)
-    //   }
-    // }
   }
 
   useEffect(() => {
