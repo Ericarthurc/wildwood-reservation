@@ -39,7 +39,7 @@ const ServiceForm = () => {
 
   const formHandler = async (e) => {
     e.preventDefault()
-    console.log(e.target.elements)
+    // console.log(e.target.elements)
     let formObj = {}
     for (let i = 3; i < (e.target.elements.length - 1); i++) {
       formObj[i] = e.target.elements[i].value
@@ -47,7 +47,6 @@ const ServiceForm = () => {
     }
     setRadioCheck('')
     try {
-      setRadioCheck('')
       await axios.patch(`/services/${radioID}`, { 'serviceSeats': formObj[3] })
       await axios.post('/users',
         { 'service': radioCheck, 'seats': formObj[3], 'name': formObj[4], 'email': formObj[5] })

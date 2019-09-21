@@ -24,7 +24,7 @@ router.get('/services', async (req, res) => {
 })
 
 router.patch('/services/:id', async (req, res) => {
-    console.log(req.body)
+    // console.log(req.body)
     const updates = Object.keys(req.body)
     const allowedUpdates = ['serviceSeats']
     const isValidOperation = updates.every((update) => allowedUpdates.includes(update))
@@ -39,7 +39,6 @@ router.patch('/services/:id', async (req, res) => {
 
     try {
         const service = await Service.findById(req.params.id)
-        console.log(service.serviceSeats)
         await Service.findByIdAndUpdate(req.params.id, {
             $set: { serviceSeats: service.serviceSeats - req.body.serviceSeats }
         }, { new: true, runValidators: true })

@@ -6,7 +6,7 @@ const router = new express.Router()
 router.use(express.json());
 
 router.post('/users', async (req, res) => {
-    console.log(req.body)
+    // console.log(req.body)
     const user = new User(req.body)
 
     try {
