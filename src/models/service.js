@@ -13,6 +13,7 @@ const Service = mongoose.model('Service', {
         required: true,
         trim: true,
         default: 500,
+        minimum: 0,
         validate(value) {
             if (value < 0) {
                 throw new Error('Must be a postive number')

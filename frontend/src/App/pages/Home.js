@@ -1,12 +1,13 @@
 import React, { Component, useState, useEffect } from 'react';
-// import { Link } from 'react-router-dom';
 import '../App.css';
+import Navigation from './Navigation'
 import axios from "axios";
 import { Container, Row, Col, Navbar, Form } from 'react-bootstrap';
 
 const Home = () => {
   return (
     <div className="App">
+      <Navigation></Navigation>
       <ServiceForm></ServiceForm>
     </div>
   )
@@ -46,15 +47,19 @@ const ServiceForm = () => {
     }
     setRadioCheck('')
     try {
+      setRadioCheck('')
+      await axios.patch(`/services/${radioID}`, { 'serviceSeats': formObj[3] })
       await axios.post('/users',
         { 'service': radioCheck, 'seats': formObj[3], 'name': formObj[4], 'email': formObj[5] })
-      await axios.patch(`/services/${radioID}`, { 'serviceSeats': formObj[3] })
       getServices()
       setStatusMessage('Submitted Successfully!')
     } catch (e) {
       if (e.response.status === 400) {
         console.log(e)
         setStatusMessage('Invalid Form Input')
+      } else if (e.response.status === 406) {
+        console.log(e)
+        setStatusMessage(`The selected service does not have ${formObj[3]} seats available`)
       } else if (e.response.status === 422) {
         setStatusMessage('This email has already been used')
         console.log(e)
@@ -81,25 +86,31 @@ const ServiceForm = () => {
                 <div className={radioCheck === 'ServiceOne' ? 'serviceIconClicked' : 'serviceIcon'}>
                   <ion-icon name="cloudy"></ion-icon>
                 </div>
-                <Form.Check type="radio" value="ServiceOne" key={serviceOne._id} onChange={(e) => radioHandler(e, serviceOne._id)} checked={radioCheck === 'ServiceOne'} />
+                <Form.Check type="radio" value="ServiceOne" key={serviceOne._id} onChange={(e) => radioHandler(e, serviceOne._id)} checked={radioCheck === 'ServiceOne'} disabled={(serviceOne.serviceSeats <= 0)} />
               </div>
-              <p key={serviceOne._id}>{serviceOne.serviceSeats}</p>
+              <div>
+                {(serviceOne.serviceSeats <= 0) ? <p>Service full</p> : <p key={serviceOne._id}>Seats: {serviceOne.serviceSeats}</p>}
+              </div>
             </Col>
             <Col>
               <div>
                 <p>9:45am</p>
                 <div className={radioCheck === 'ServiceTwo' ? 'serviceIconClicked' : 'serviceIcon'}><ion-icon name="cloudy"></ion-icon></div>
-                <Form.Check type="radio" value="ServiceTwo" key={serviceTwo._id} onChange={(e) => radioHandler(e, serviceTwo._id)} checked={radioCheck === 'ServiceTwo'} />
+                <Form.Check type="radio" value="ServiceTwo" key={serviceTwo._id} onChange={(e) => radioHandler(e, serviceTwo._id)} checked={radioCheck === 'ServiceTwo'} disabled={(serviceTwo.serviceSeats <= 0)} />
               </div>
-              <p key={serviceTwo._id}>{serviceTwo.serviceSeats}</p>
+              <div>
+                {(serviceTwo.serviceSeats <= 0) ? <p>Service full</p> : <p key={serviceTwo._id}>Seats: {serviceTwo.serviceSeats}</p>}
+              </div>
             </Col>
             <Col>
               <div>
                 <p>11:30am</p>
                 <div className={radioCheck === 'ServiceThree' ? 'serviceIconClicked' : 'serviceIcon'}><ion-icon name="cloudy"></ion-icon></div>
-                <Form.Check type="radio" value="ServiceThree" key={serviceThree._id} onChange={(e) => radioHandler(e, serviceThree._id)} checked={radioCheck === 'ServiceThree'} />
+                <Form.Check type="radio" value="ServiceThree" key={serviceThree._id} onChange={(e) => radioHandler(e, serviceThree._id)} checked={radioCheck === 'ServiceThree'} disabled={(serviceThree.serviceSeats <= 0)} />
               </div>
-              <p key={serviceThree._id}>{serviceThree.serviceSeats}</p>
+              <div>
+                {(serviceThree.serviceSeats <= 0) ? <p>Service full</p> : <p key={serviceThree._id}>Seats: {serviceThree.serviceSeats}</p>}
+              </div>
             </Col>
             <Col lg={2}></Col>
           </Row>

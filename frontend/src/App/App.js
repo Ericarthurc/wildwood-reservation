@@ -21,10 +21,6 @@ class App extends Component {
         )
         return (
             <div>
-                <Navbar>
-                    <Navbar.Brand href="">Wildwood</Navbar.Brand>
-                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                </Navbar>
                 <Switch>
                     <App />
                 </Switch>
