@@ -4,12 +4,12 @@
 
 body {
   font-size: 16px;
+  background-color: rgb(238, 238, 238);
 }
 
 #form {
   padding-top: 30px;
 }
-
 
 p {
   font-size: 18px;
@@ -64,6 +64,14 @@ ion-icon {
 
 .serviceIconClicked {
   color: #76323F;
+  -moz-transition: all 0.2s ease-in;
+  -o-transition: all 0.2s ease-in;
+  -webkit-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+}
+
+.serviceIconDisabled {
+  color: #565656;
   -moz-transition: all 0.2s ease-in;
   -o-transition: all 0.2s ease-in;
   -webkit-transition: all 0.2s ease-in;

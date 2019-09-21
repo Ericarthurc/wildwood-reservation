@@ -24,7 +24,7 @@ router.get('/services', async (req, res) => {
 })
 
 router.patch('/services/:id', async (req, res) => {
-    // console.log(req.body)
+    console.log(req.body)
     const updates = Object.keys(req.body)
     const allowedUpdates = ['serviceSeats']
     const isValidOperation = updates.every((update) => allowedUpdates.includes(update))
@@ -49,7 +49,7 @@ router.patch('/services/:id', async (req, res) => {
         res.send(service)
     } catch (e) {
         if (e.name == 'ValidationError') {
-            console.error('Error Validating')
+            console.log(e)
             res.status(406).send(e)
         } else {
             res.status(400).send(e)
@@ -58,18 +58,3 @@ router.patch('/services/:id', async (req, res) => {
 })
 
 module.exports = router
-
-// try {
-//     const service = await Service.findByIdAndUpdate(req.params.id, {
-//         $inc: { serviceSeats: -req.body.serviceSeats }
-//     }, { new: true, runValidators: true })
-
-//     if (!service) {
-//         return res.status(404).send()
-//     }
-
-//     res.send(service)
-// } catch (e) {
-//     console.log(e)
-//     res.status(400).send(e)
-// }
