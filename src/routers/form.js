@@ -41,7 +41,7 @@ router.post('/forms/services', [validateCheck, emailCheck], async (req, res) => 
         res.status(201).send(user)
     } catch (e) {
         if (e.name == 'ValidationError') {
-            return res.status(422).send({ error: 'Not enough seats available in selected service!' })
+            return res.status(406).send({ error: 'Not enough seats available in selected service!' })
         }
         res.status(500).send()
     }

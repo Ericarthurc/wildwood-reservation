@@ -27,8 +27,9 @@ const ServiceForm = () => {
       setServiceOne(res.data[0])
       setServiceTwo(res.data[1])
       setServiceThree(res.data[2])
+      setStatusMessage('')
     } catch (e) {
-      console.log(e.response.status)
+      setStatusMessage('Database had error, try again')
     }
   }
 
@@ -60,10 +61,10 @@ const ServiceForm = () => {
         setStatusMessage('Invalid Form Input')
       } else if (e.response.status === 406) {
         setStatusMessage(`The selected service does not have ${formObj[3]} seats available`)
-      } else if (e.response.status === 409) {
-        setStatusMessage('Invalid Form Input')
       } else if (e.response.status === 422) {
         setStatusMessage('This email has already been used')
+      } else if (e.response.status === 500) {
+        setStatusMessage('Database had error, try again')
       } else {
         console.log(e)
       }
