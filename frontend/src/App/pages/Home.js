@@ -27,7 +27,8 @@ const ServiceForm = () => {
       setServiceOne(res.data[0])
       setServiceTwo(res.data[1])
       setServiceThree(res.data[2])
-      setStatusMessage('')
+      // Line below causes all messages to reset to '' after the interval
+      // setStatusMessage('')
     } catch (e) {
       setStatusMessage('Database had error, try again')
     }
