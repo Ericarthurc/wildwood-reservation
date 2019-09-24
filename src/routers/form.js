@@ -10,6 +10,7 @@ const chalk = require('chalk')
 router.use(express.json());
 
 // LOOK INTO MONGOOSE-TRANSACTIONS
+// Throw new Error in the if() will send a 'e' in the try catch
 
 router.post('/forms/services', [validateCheck, emailCheck], async (req, res) => {
     console.log(req.body)
