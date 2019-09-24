@@ -2,6 +2,7 @@ import React, { Component, useState, useEffect } from 'react';
 import '../App.css';
 import Navigation from './Navigation'
 import axios from "axios";
+import validator from 'validator'
 import { Container, Row, Col, Navbar, Form } from 'react-bootstrap';
 
 const Home = () => {
@@ -47,7 +48,7 @@ const ServiceForm = () => {
       e.target.elements[i].value = ''
     }
     try {
-      if (radioCheck && formObj[3] && formObj[4] && formObj[5]) {
+      if (radioCheck && formObj[3] && formObj[4] && formObj[5] && validator.isEmail(formObj[5])) {
         await axios.post('/forms/services', [{ '_id': radioID, 'serviceSeats': formObj[3] },
         { 'service': radioCheck, 'seats': formObj[3], 'name': formObj[4], 'email': formObj[5] }])
         getServices()
