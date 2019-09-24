@@ -33,4 +33,4 @@ Todo list:
 Future list:
 - I will probably want to do a PEVN stack
 -- PostgreSQL, Express, VueJs, Node
--- Reason: VueJS is super fun an light weight and it's easier to code in my opinion, PostgreSQL is a relational database and I would highly benifit from the rollback feature 
+-- Reason: VueJS is super fun and light weight and it's easier to code in my opinion, PostgreSQL is a relational database and I would highly benifit from the rollback feature 
