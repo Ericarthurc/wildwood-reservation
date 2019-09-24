@@ -1,3 +1,4 @@
+const validator = require('validator')
 const chalk = require('chalk')
 
 const validateCheck = async (req, res, next) => {
@@ -7,12 +8,19 @@ const validateCheck = async (req, res, next) => {
     const isEmptyTwo = Object.values(req.body[1]).some(x => (x === null || x === ''))
     console.log(isEmptyTwo)
 
-    if (isEmptyOne || isEmptyTwo) {
-        res.status(400).send({ error: 'Data contained empty value!' })
-        return console.log(chalk.red('failed'))
+    if (validator.isEmail(req.body[1].email)) {
+        if (isEmptyOne || isEmptyTwo) {
+            res.status(400).send({ error: 'Data contained empty value!' })
+            return console.log(chalk.red('failed'))
+        } else {
+            console.log(chalk.green('passed!'))
+            next()
+        }
+    } else {
+        console.log('Email failed validator check!')
+        res.status(400).send({ error: 'Email failed validator check!' })
     }
-    console.log(chalk.green('passed!'))
-    next()
+
 }
 
 module.exports = validateCheck
