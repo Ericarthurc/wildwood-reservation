@@ -23,3 +23,14 @@ New code tools:
 - Nodejs bringing it all together
 - SMTP integration
 - Bootstrap 4 standards (some custom css)
+
+Todo list:
+- Add mailer functionality with my smtp server
+- Handle mongoose on Heroku
+- Clean up the css
+- Deploy on Heroku
+
+Future list:
+- I will probably want to do a PEVN stack
+-- PostgreSQL, Express, VueJs, Node
+-- Reason: VueJS is super fun an light weight and it's easier to code in my opinion, PostgreSQL is a relational database and I would highly benifit from the rollback feature 
