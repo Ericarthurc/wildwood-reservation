@@ -87,10 +87,10 @@ const ServiceForm = () => {
             <Col>
               <div>
                 <p>8:00am</p>
-                <div className={(serviceOne.serviceSeats <= 0) ? 'serviceIconDisabled' : (radioCheck === 'ServiceOne' ? 'serviceIconClicked' : 'serviceIcon')}>
+                <div className={(serviceOne.serviceSeats <= 0) ? 'serviceIconDisabled' : (radioCheck === 'First Service' ? 'serviceIconClicked' : 'serviceIcon')}>
                   <ion-icon name="cloudy"></ion-icon>
                 </div>
-                <Form.Check type="radio" value="ServiceOne" key={serviceOne._id} onChange={(e) => radioHandler(e, serviceOne._id)} checked={radioCheck === 'ServiceOne'} disabled={(serviceOne.serviceSeats <= 0)} />
+                <Form.Check type="radio" value="First Service" key={serviceOne._id} onChange={(e) => radioHandler(e, serviceOne._id)} checked={radioCheck === 'First Service'} disabled={(serviceOne.serviceSeats <= 0)} />
               </div>
               <div>
                 {(serviceOne.serviceSeats <= 0) ? <p>Service full</p> : <p key={serviceOne._id}>Seats: {serviceOne.serviceSeats}</p>}
@@ -99,10 +99,10 @@ const ServiceForm = () => {
             <Col>
               <div>
                 <p>9:45am</p>
-                <div className={(serviceTwo.serviceSeats <= 0) ? 'serviceIconDisabled' : (radioCheck === 'ServiceTwo' ? 'serviceIconClicked' : 'serviceIcon')}>
+                <div className={(serviceTwo.serviceSeats <= 0) ? 'serviceIconDisabled' : (radioCheck === 'Second Service' ? 'serviceIconClicked' : 'serviceIcon')}>
                   <ion-icon name="cloudy"></ion-icon>
                 </div>
-                <Form.Check type="radio" value="ServiceTwo" key={serviceTwo._id} onChange={(e) => radioHandler(e, serviceTwo._id)} checked={radioCheck === 'ServiceTwo'} disabled={(serviceTwo.serviceSeats <= 0)} />
+                <Form.Check type="radio" value="Second Service" key={serviceTwo._id} onChange={(e) => radioHandler(e, serviceTwo._id)} checked={radioCheck === 'Second Service'} disabled={(serviceTwo.serviceSeats <= 0)} />
               </div>
               <div>
                 {(serviceTwo.serviceSeats <= 0) ? <p>Service full</p> : <p key={serviceTwo._id}>Seats: {serviceTwo.serviceSeats}</p>}
@@ -111,10 +111,10 @@ const ServiceForm = () => {
             <Col>
               <div>
                 <p>11:30am</p>
-                <div className={(serviceThree.serviceSeats <= 0) ? 'serviceIconDisabled' : (radioCheck === 'ServiceThree' ? 'serviceIconClicked' : 'serviceIcon')}>
+                <div className={(serviceThree.serviceSeats <= 0) ? 'serviceIconDisabled' : (radioCheck === 'Third Service' ? 'serviceIconClicked' : 'serviceIcon')}>
                   <ion-icon name="cloudy"></ion-icon>
                 </div>
-                <Form.Check type="radio" value="ServiceThree" key={serviceThree._id} onChange={(e) => radioHandler(e, serviceThree._id)} checked={radioCheck === 'ServiceThree'} disabled={(serviceThree.serviceSeats <= 0)} />
+                <Form.Check type="radio" value="Third Service" key={serviceThree._id} onChange={(e) => radioHandler(e, serviceThree._id)} checked={radioCheck === 'Third Service'} disabled={(serviceThree.serviceSeats <= 0)} />
               </div>
               <div>
                 {(serviceThree.serviceSeats <= 0) ? <p>Service full</p> : <p key={serviceThree._id}>Seats: {serviceThree.serviceSeats}</p>}

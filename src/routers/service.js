@@ -4,7 +4,11 @@ const auth = require('../middleware/auth')
 const router = new express.Router()
 
 router.post('/services', auth, async (req, res) => {
-    const service = new Service(req.body)
+    const data = {
+        serviceSeats: req.body.serviceSeats,
+        serviceName: req.body.serviceName
+    }
+    const service = new Service(data)
 
     try {
         await service.save()
@@ -23,24 +27,19 @@ router.get('/services', async (req, res) => {
     }
 })
 
-router.patch('/services/:id', async (req, res) => {
-    console.log(req.body)
+router.patch('/services/:id', auth, async (req, res) => {
     const updates = Object.keys(req.body)
-    const allowedUpdates = ['serviceSeats']
+    const allowedUpdates = ['serviceSeats', 'secret', 'pin']
     const isValidOperation = updates.every((update) => allowedUpdates.includes(update))
 
     if (!isValidOperation) {
         return res.status(400).send({ error: 'Invalid update!' })
     }
 
-    if (req.body.serviceSeats > 10) {
-        return res.status(406).send({ error: 'Seat value has to be 10 or below' })
-    }
-
     try {
         const service = await Service.findById(req.params.id)
         await Service.findByIdAndUpdate(req.params.id, {
-            $set: { serviceSeats: service.serviceSeats - req.body.serviceSeats }
+            $set: { serviceSeats: req.body.serviceSeats }
         }, { new: true, runValidators: true })
         if (!service) {
             return res.status(404).send()

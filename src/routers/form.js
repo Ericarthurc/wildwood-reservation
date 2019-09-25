@@ -1,7 +1,7 @@
 const express = require('express')
 const User = require('../models/user')
 const Service = require('../models/service')
-const auth = require('../middleware/auth')
+const sendSignUpEmail = require('../emails/account')
 const validateCheck = require('../middleware/validateCheck')
 const emailCheck = require('../middleware/emailCheck')
 const router = new express.Router()
@@ -13,32 +13,23 @@ router.use(express.json());
 // Throw new Error in the if() will send a 'e' in the try catch
 
 router.post('/forms/services', [validateCheck, emailCheck], async (req, res) => {
-    console.log(req.body)
-    console.log(req.body[0].serviceSeats)
     const user = new User(req.body[1])
 
     try {
-        console.log(chalk.magenta('STEP 1: findbyID'))
-
         const currentService = await Service.findById(req.body[0]._id)
         if (!currentService) {
-            console.log('bad service id')
             return res.status(422).send({ error: 'Service ID not found!' })
         }
-
-        console.log(chalk.magenta('STEP 2: findbyIDandUpdate'))
 
         const currentSeats = await Service.findByIdAndUpdate(req.body[0]._id, {
             $set: { serviceSeats: currentService.serviceSeats - req.body[0].serviceSeats }
         }, { new: true, runValidators: true })
         if (!currentSeats) {
-            console.log('bad service id')
             return res.status(422).send({ error: 'Service ID not found!' })
         }
 
-        console.log(chalk.green('STEP 3: Save user'))
-
         await user.save()
+        sendSignUpEmail(req.body[1].email, req.body[1].name, req.body[1].service, req.body[1].seats)
         res.status(201).send(user)
     } catch (e) {
         if (e.name == 'ValidationError') {

@@ -7,9 +7,10 @@
   "scripts": {
     "start": "node src/server.js",
     "heroku-postbuild": "cd frontend && npm install && npm run build",
-    "dev": "nodemon src/server.js"
+    "dev": "env-cmd -f ./config/dev.env nodemon src/server.js"
   },
   "dependencies": {
+    "@sendgrid/mail": "^6.4.0",
     "chalk": "^2.4.2",
     "connect-history-api-fallback": "^1.6.0",
     "cors": "^2.8.5",
@@ -22,6 +23,7 @@
     "validator": "^11.1.0"
   },
   "devDependencies": {
+    "env-cmd": "^10.0.1",
     "nodemon": "^1.19.2"
   }
 }

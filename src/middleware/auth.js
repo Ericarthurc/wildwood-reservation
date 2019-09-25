@@ -1,11 +1,10 @@
-const keys = require('../keys/keys')
-
 const auth = async (req, res, next) => {
     try {
-        const login = Object.values(req.body).toString()
-        console.log(req.body)
-        const token = Object.values(keys.adminLogin).toString()
-        if (token === login) {
+        // console.log(req.body)
+        const secret = req.body.secret
+        const pin = req.body.pin
+        if (secret == process.env.SECRET && pin == process.env.PIN) {
+            // console.log('PASSED')
             next()
         } else {
             throw new Error()
