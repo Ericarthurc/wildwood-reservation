@@ -1,10 +1,10 @@
 * {
-  font-family: 'Lato';
+  font-family: "Lato";
 }
 
 body {
   font-size: 16px;
-  background-color: rgb(238, 238, 238);
+  background-color: #ffffff;
 }
 
 #form {
@@ -13,7 +13,7 @@ body {
 
 p {
   font-size: 18px;
-  color: #565656;
+  color: #a77d42;
   font-weight: 700;
 }
 
@@ -23,8 +23,8 @@ ion-icon {
 }
 
 .navbar {
-  background-color: #76323F;
-  border-bottom: 2px solid rgb(167, 70, 88);
+  background-color: #864a40;
+  /* border-bottom: 2px solid #a5791f; */
 }
 .nav-item {
   padding-right: 3px;
@@ -47,15 +47,15 @@ ion-icon {
 } */
 
 .errorStatus {
-  color: red;
+  color: #9e4131;
 }
 
 .successStatus {
-  color: rgb(00, 200, 100);
+  color: #2d5e3d;
 }
 
 .serviceIcon {
-  color: #C09F80;
+  color: #866740;
   -moz-transition: all 0.2s ease-in;
   -o-transition: all 0.2s ease-in;
   -webkit-transition: all 0.2s ease-in;
@@ -63,7 +63,7 @@ ion-icon {
 }
 
 .serviceIconClicked {
-  color: #76323F;
+  color: #864a40;
   -moz-transition: all 0.2s ease-in;
   -o-transition: all 0.2s ease-in;
   -webkit-transition: all 0.2s ease-in;
@@ -90,19 +90,30 @@ ion-icon {
   text-align: center;
 }
 
-/*
+/* Mutted black and red
 #D7CEC7 GRAIN
 #565656 BLACKBOARD
 #76323F OXBLOOD
 #C09F80 TAN
 */
 
+/* https://envato.com/blog/holiday-color-palettes-arent-just-red-green/
+Vintage Christmas
+#a5791f dark gold
+#a77d42 medium gold
+#cbb080 light gold
+#fbf6e8 really light gold
+#864a40 mutted red
+*/
+
 .myButton {
-  background-color: #C09F80;
+  /* font-family: "Lato"; */
+  /* font-weight: 700; */
+  background-color: #864a40;
   -moz-border-radius: 42px;
   -webkit-border-radius: 42px;
   border-radius: 8px;
-  border: 2px solid #D7CEC7;
+  border: 2px solid #5e332d;
   display: inline-block;
   cursor: pointer;
   color: #ffffff;
@@ -113,8 +124,8 @@ ion-icon {
 }
 
 .myButton:hover {
-  background-color: #D7CEC7;
-  border: 2px solid #C09F80;
+  background-color: #864a40b4;
+  border: 2px solid #5e332d;
 }
 
 .myButton:active {
@@ -130,14 +141,18 @@ ion-icon {
   padding-top: 30px;
 }
 
-.form-control:focus {
-  background-color: rgb(255, 255, 255);
-  border-color: rgb(167, 70, 88);
-  outline: 0;
-  box-shadow: 0 0 0 0.2rem #76323F;
+.form-control {
+  /* background-color: rgb(0, 0, 0); */
+  margin-top: 12px;
+  margin-bottom: 10px;
+  /* border-color: #864a40c0; */
+  border-color: #864a40;
+  box-shadow: 0 0 0 0.1rem #864a40;
 }
 
-.form-control {
-  margin-top: 10px;
-  margin-bottom: 10px;
+.form-control:focus {
+  /* background-color: rgb(0, 0, 0); */
+  border-color: #866740a6;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem #866740;
 }
