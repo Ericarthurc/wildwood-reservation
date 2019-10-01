@@ -31,4 +31,4 @@ if (require.main === module) {
 };
 
 
-// mongod --dbpath=/Users/ericarthurc/mongodb-data
+// beta2
