@@ -18,6 +18,9 @@ const ServiceForm = () => {
   const [serviceOne, setServiceOne] = useState([])
   const [serviceTwo, setServiceTwo] = useState([])
   const [serviceThree, setServiceThree] = useState([])
+  const [serviceFour, setServiceFour] = useState([])
+  const [serviceFive, setServiceFive] = useState([])
+  const [serviceSix, setServiceSix] = useState([])
   const [radioCheck, setRadioCheck] = useState()
   const [radioID, setRadioID] = useState()
   const [statusMessage, setStatusMessage] = useState()
@@ -28,6 +31,9 @@ const ServiceForm = () => {
       setServiceOne(res.data[0])
       setServiceTwo(res.data[1])
       setServiceThree(res.data[2])
+      setServiceFour(res.data[3])
+      setServiceFive(res.data[4])
+      setServiceSix(res.data[5])
       // Line below causes all messages to reset to '' after the interval
       // setStatusMessage('')
     } catch (e) {
@@ -160,54 +166,54 @@ const ServiceForm = () => {
             <Col>
               <div>
                 <p>8:00am</p>
-                <div className={(serviceOne.serviceSeats <= 0) ? 'serviceIconDisabled' : (radioCheck === 'First Service' ? 'serviceIconClicked' : 'serviceIcon')}>
+                <div className={(serviceFour.serviceSeats <= 0) ? 'serviceIconDisabled' : (radioCheck === 'Fourth Service' ? 'serviceIconClicked' : 'serviceIcon')}>
                   <span className="icon-DONUT"></span>
                 </div>
                 <Form.Check
                   type="radio"
-                  value="First Service"
-                  key={serviceOne._id}
-                  onChange={(e) => radioHandler(e, serviceOne._id)}
-                  checked={radioCheck === 'First Service'}
-                  disabled={(serviceOne.serviceSeats <= 0)} />
+                  value="Fourth Service"
+                  key={serviceFour._id}
+                  onChange={(e) => radioHandler(e, serviceFour._id)}
+                  checked={radioCheck === 'Fourth Service'}
+                  disabled={(serviceFour.serviceSeats <= 0)} />
               </div>
               <div>
-                {(serviceOne.serviceSeats <= 0) ? <p>Service full</p> : <p key={serviceOne._id}>Seats: {serviceOne.serviceSeats}</p>}
+                {(serviceFour.serviceSeats <= 0) ? <p>Service full</p> : <p key={serviceFour._id}>Seats: {serviceFour.serviceSeats}</p>}
               </div>
             </Col>
             <Col>
               <div>
                 <p>9:45am</p>
-                <div className={(serviceTwo.serviceSeats <= 0) ? 'serviceIconDisabled' : (radioCheck === 'Second Service' ? 'serviceIconClicked' : 'serviceIcon')}>
+                <div className={(serviceFive.serviceSeats <= 0) ? 'serviceIconDisabled' : (radioCheck === 'Fifth Service' ? 'serviceIconClicked' : 'serviceIcon')}>
                   <span className="icon-DONUT"></span>
                 </div>
                 <Form.Check
                   type="radio"
-                  value="Second Service"
-                  key={serviceTwo._id} onChange={(e) => radioHandler(e, serviceTwo._id)}
-                  checked={radioCheck === 'Second Service'}
-                  disabled={(serviceTwo.serviceSeats <= 0)} />
+                  value="Fifth Service"
+                  key={serviceFive._id} onChange={(e) => radioHandler(e, serviceFive._id)}
+                  checked={radioCheck === 'Fifth Service'}
+                  disabled={(serviceFive.serviceSeats <= 0)} />
               </div>
               <div>
-                {(serviceTwo.serviceSeats <= 0) ? <p>Service full</p> : <p key={serviceTwo._id}>Seats: {serviceTwo.serviceSeats}</p>}
+                {(serviceFive.serviceSeats <= 0) ? <p>Service full</p> : <p key={serviceFive._id}>Seats: {serviceFive.serviceSeats}</p>}
               </div>
             </Col>
             <Col>
               <div>
                 <p>11:30am</p>
-                <div className={(serviceThree.serviceSeats <= 0) ? 'serviceIconDisabled' : (radioCheck === 'Third Service' ? 'serviceIconClicked' : 'serviceIcon')}>
+                <div className={(serviceSix.serviceSeats <= 0) ? 'serviceIconDisabled' : (radioCheck === 'Sixth Service' ? 'serviceIconClicked' : 'serviceIcon')}>
                   <span className="icon-DONUT"></span>
                 </div>
                 <Form.Check
                   type="radio"
-                  value="Third Service"
-                  key={serviceThree._id}
-                  onChange={(e) => radioHandler(e, serviceThree._id)}
-                  checked={radioCheck === 'Third Service'}
-                  disabled={(serviceThree.serviceSeats <= 0)} />
+                  value="Sixth Service"
+                  key={serviceSix._id}
+                  onChange={(e) => radioHandler(e, serviceSix._id)}
+                  checked={radioCheck === 'Sixth Service'}
+                  disabled={(serviceSix.serviceSeats <= 0)} />
               </div>
               <div>
-                {(serviceThree.serviceSeats <= 0) ? <p>Service full</p> : <p key={serviceThree._id}>Seats: {serviceThree.serviceSeats}</p>}
+                {(serviceSix.serviceSeats <= 0) ? <p>Service full</p> : <p key={serviceSix._id}>Seats: {serviceSix.serviceSeats}</p>}
               </div>
             </Col>
             <Col lg={2}></Col>

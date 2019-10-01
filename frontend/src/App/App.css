@@ -165,23 +165,23 @@ Vintage Christmas
   box-shadow: 0 0 0 0.2rem #866740;
 }
 
-
 /* CUSTOM */
 @font-face {
-  font-family: 'icomoon';
-  src:  url('./fonts/icomoon.eot?umppzl');
-  src:  url('./fonts/icomoon.eot?umppzl#iefix') format('embedded-opentype'),
-    url('./fonts/icomoon.ttf?umppzl') format('truetype'),
-    url('./fonts/icomoon.woff?umppzl') format('woff'),
-    url('./fonts/icomoon.svg?umppzl#icomoon') format('svg');
+  font-family: "icomoon";
+  src: url("./fonts/icomoon.eot?umppzl");
+  src: url("./fonts/icomoon.eot?umppzl#iefix") format("embedded-opentype"),
+    url("./fonts/icomoon.ttf?umppzl") format("truetype"),
+    url("./fonts/icomoon.woff?umppzl") format("woff"),
+    url("./fonts/icomoon.svg?umppzl#icomoon") format("svg");
   font-weight: normal;
   font-style: normal;
   font-display: block;
 }
 
-[class^="icon-"], [class*=" icon-"] {
+[class^="icon-"],
+[class*=" icon-"] {
   /* use !important to prevent issues with browser extensions that change fonts */
-  font-family: 'icomoon' !important;
+  font-family: "icomoon" !important;
   speak: none;
   font-style: normal;
   font-weight: normal;
@@ -196,7 +196,7 @@ Vintage Christmas
 
 .icon-DONUT:before {
   content: "\e900";
-   font-size: 65px;
+  font-size: 65px;
 }
 
 /* .icon-DONUT {
