@@ -5,10 +5,15 @@
 body {
   font-size: 16px;
   background-color: #1f1f1f;
+  border-top: 10px solid #5e332d;
 }
 
 #form {
   padding-top: 30px;
+}
+
+h1 {
+  color: #a77d42;
 }
 
 p {
@@ -20,6 +25,16 @@ p {
 ion-icon {
   font-size: 80px;
   /* color: rgb(00, 200, 100); */
+}
+
+.logoImage {
+  margin-top: 20px;
+  width: 450px;
+}
+
+.notFound {
+  margin-top: 15%;
+  font-size: 50px;
 }
 
 .serviceDate {

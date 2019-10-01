@@ -6,9 +6,9 @@ class ErrorPage extends Component {
     render() {
         return (
             <div className="App">
-                <img className="pic" src="https://raw.githubusercontent.com/webpack/media/master/logo/icon-square-big.png" alt="logo"></img>
-                <h1>404 Page Not Found</h1>
-            </div>
+                <img className="logoImage" src="./images/wwTitleLogo.svg" alt="logoImage" />
+                <h1 className="notFound">404 Page Not Found</h1>
+            </div >
         );
     }
 }

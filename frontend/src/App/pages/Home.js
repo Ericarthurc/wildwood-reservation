@@ -8,7 +8,7 @@ import { Container, Row, Col, Navbar, Form } from 'react-bootstrap';
 const Home = () => {
   return (
     <div className="App">
-      <Navigation></Navigation>
+      <img className="logoImage" src="./images/wwTitleLogo.svg" alt="logoImage" />
       <ServiceForm></ServiceForm>
     </div>
   )
