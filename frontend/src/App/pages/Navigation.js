@@ -6,7 +6,7 @@ const Navigation = () => {
     return (
         <div>
             <Navbar>
-                <Navbar.Brand href="">Wildwood</Navbar.Brand>
+                <Navbar.Brand href="">Wildwood Christmas Services</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
             </Navbar>
         </div>

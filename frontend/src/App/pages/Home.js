@@ -41,6 +41,7 @@ const ServiceForm = () => {
   }
 
   const formHandler = async (e) => {
+    // Needs rewrite; loop is nice but not friendly in readability 
     e.preventDefault()
     let formObj = {}
     for (let i = 3; i < (e.target.elements.length - 1); i++) {
@@ -83,12 +84,21 @@ const ServiceForm = () => {
       <Container>
         <Form onSubmit={formHandler}>
           <Row>
+            <Col lg={2}>
+            </Col>
+            <Col>
+              <p className="serviceDate">Monday December 23rd</p>
+            </Col>
+            <Col lg={2}>
+            </Col>
+          </Row>
+          <Row>
             <Col lg={2}></Col>
             <Col>
               <div>
                 <p>8:00am</p>
                 <div className={(serviceOne.serviceSeats <= 0) ? 'serviceIconDisabled' : (radioCheck === 'First Service' ? 'serviceIconClicked' : 'serviceIcon')}>
-                  <ion-icon name="ios-cloudy"></ion-icon>
+                  <span class="icon-DONUT"></span>
                 </div>
                 <Form.Check type="radio" value="First Service" key={serviceOne._id} onChange={(e) => radioHandler(e, serviceOne._id)} checked={radioCheck === 'First Service'} disabled={(serviceOne.serviceSeats <= 0)} />
               </div>
@@ -100,7 +110,7 @@ const ServiceForm = () => {
               <div>
                 <p>9:45am</p>
                 <div className={(serviceTwo.serviceSeats <= 0) ? 'serviceIconDisabled' : (radioCheck === 'Second Service' ? 'serviceIconClicked' : 'serviceIcon')}>
-                  <ion-icon name="ios-partly-sunny"></ion-icon>
+                  <span class="icon-DONUT"></span>
                 </div>
                 <Form.Check type="radio" value="Second Service" key={serviceTwo._id} onChange={(e) => radioHandler(e, serviceTwo._id)} checked={radioCheck === 'Second Service'} disabled={(serviceTwo.serviceSeats <= 0)} />
               </div>
@@ -112,7 +122,56 @@ const ServiceForm = () => {
               <div>
                 <p>11:30am</p>
                 <div className={(serviceThree.serviceSeats <= 0) ? 'serviceIconDisabled' : (radioCheck === 'Third Service' ? 'serviceIconClicked' : 'serviceIcon')}>
-                  <ion-icon name="ios-sunny"></ion-icon>
+                  <span class="icon-DONUT"></span>
+                </div>
+                <Form.Check type="radio" value="Third Service" key={serviceThree._id} onChange={(e) => radioHandler(e, serviceThree._id)} checked={radioCheck === 'Third Service'} disabled={(serviceThree.serviceSeats <= 0)} />
+              </div>
+              <div>
+                {(serviceThree.serviceSeats <= 0) ? <p>Service full</p> : <p key={serviceThree._id}>Seats: {serviceThree.serviceSeats}</p>}
+              </div>
+            </Col>
+            <Col lg={2}></Col>
+          </Row>
+          <Row>
+            <Col lg={2}>
+            </Col>
+            <Col>
+              <p className="serviceDate">Tuesday December 24th</p>
+            </Col>
+            <Col lg={2}>
+            </Col>
+          </Row>
+          <Row>
+            <Col lg={2}></Col>
+            <Col>
+              <div>
+                <p>8:00am</p>
+                <div className={(serviceOne.serviceSeats <= 0) ? 'serviceIconDisabled' : (radioCheck === 'First Service' ? 'serviceIconClicked' : 'serviceIcon')}>
+                  <span class="icon-DONUT"></span>
+                </div>
+                <Form.Check type="radio" value="First Service" key={serviceOne._id} onChange={(e) => radioHandler(e, serviceOne._id)} checked={radioCheck === 'First Service'} disabled={(serviceOne.serviceSeats <= 0)} />
+              </div>
+              <div>
+                {(serviceOne.serviceSeats <= 0) ? <p>Service full</p> : <p key={serviceOne._id}>Seats: {serviceOne.serviceSeats}</p>}
+              </div>
+            </Col>
+            <Col>
+              <div>
+                <p>9:45am</p>
+                <div className={(serviceTwo.serviceSeats <= 0) ? 'serviceIconDisabled' : (radioCheck === 'Second Service' ? 'serviceIconClicked' : 'serviceIcon')}>
+                  <span class="icon-DONUT"></span>
+                </div>
+                <Form.Check type="radio" value="Second Service" key={serviceTwo._id} onChange={(e) => radioHandler(e, serviceTwo._id)} checked={radioCheck === 'Second Service'} disabled={(serviceTwo.serviceSeats <= 0)} />
+              </div>
+              <div>
+                {(serviceTwo.serviceSeats <= 0) ? <p>Service full</p> : <p key={serviceTwo._id}>Seats: {serviceTwo.serviceSeats}</p>}
+              </div>
+            </Col>
+            <Col>
+              <div>
+                <p>11:30am</p>
+                <div className={(serviceThree.serviceSeats <= 0) ? 'serviceIconDisabled' : (radioCheck === 'Third Service' ? 'serviceIconClicked' : 'serviceIcon')}>
+                  <span class="icon-DONUT"></span>
                 </div>
                 <Form.Check type="radio" value="Third Service" key={serviceThree._id} onChange={(e) => radioHandler(e, serviceThree._id)} checked={radioCheck === 'Third Service'} disabled={(serviceThree.serviceSeats <= 0)} />
               </div>
