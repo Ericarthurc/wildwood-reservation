@@ -29,7 +29,8 @@ ion-icon {
 
 .logoImage {
   margin-top: 20px;
-  width: 450px;
+  width: 70%;
+  max-width: 500px;
 }
 
 .notFound {
