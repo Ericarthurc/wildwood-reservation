@@ -67,6 +67,10 @@ ion-icon {
   color: red;
 } */
 
+.radioButton {
+  display: none;
+}
+
 .errorStatus {
   color: #9e4131;
 }
@@ -82,6 +86,7 @@ ion-icon {
   -o-transition: all 0.2s ease-in;
   -webkit-transition: all 0.2s ease-in;
   transition: all 0.2s ease-in;
+  cursor: pointer;
 }
 
 .serviceIconClicked {
