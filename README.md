@@ -6,6 +6,7 @@ This project started as a rewrite of an older PHP project developed in the mid 2
 The original code used a PHP and SQL stack. The project was created to make an easy way for people to reserve ‘seats’ for our Easter/Christmas services and have an email feedback. The original project was never a good solution though; it contained many issues and created more chaos than good.
 
 Issues with original code:
+
 - Unmanageable code
 - Built on very old PHP code
 - Unfriendly design (no css was used on the original project)
@@ -16,21 +17,26 @@ New code goals:
 The purpose of the rewrite is to bring the code to 2019 standards. I want a project that I understand and that I could teach to someone else in the future. A web app that is easily deployable and uses modern friendly tools.
 
 New code tools:
+
 - MERN Stack
 - Mongoose schema
 - Express backend
 - React frontend
 - Nodejs bringing it all together
-- SMTP integration
+- SMTP integration with Nodemailer and custom SMTP server
 - Bootstrap 4 standards (some custom css)
 
 Todo list:
-- Add mailer functionality with my smtp server
-- Handle mongoose on Heroku
-- Clean up the css
-- Deploy on Heroku
+
+- [x] Add mailer functionality with my smtp server
+- [x] Handle mongoose on Atlas
+- [x] Deploy on Heroku
+- [ ] Clean up the css
+- [ ] Clean up react code where I can
+- [ ] Handle when database is disconnected or service data is invalid
 
 Future list:
-- I will probably want to do a PEVN stack
--- PostgreSQL, Express, VueJs, Node
--- Reason: VueJS is super fun and light weight and it's easier to code in my opinion, PostgreSQL is a relational database and I would highly benifit from the rollback feature 
+
+- I will probably want to do a PERN stack
+  -- PostgreSQL, Express, React, Node
+  -- Reason: PostgreSQL is a relational database and I would highly benifit from the rollback feature

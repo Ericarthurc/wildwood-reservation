@@ -1,8 +1,8 @@
 {
-  "name": "Express_React",
+  "name": "Wildwood_Reservation",
   "version": "1.0.0",
   "main": "index.js",
-  "author": "Phoinix",
+  "author": "Ericarthurc",
   "license": "MIT",
   "scripts": {
     "start": "node src/server.js",
