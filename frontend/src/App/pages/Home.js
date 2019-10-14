@@ -96,7 +96,7 @@ const ServiceForm = () => {
             </Col>
           </Row>
           <Row>
-            <Col lg={2}></Col>
+            <Col lg={3}></Col>
             <Col>
               <div>
                 <p>8:00am</p>
@@ -133,6 +133,19 @@ const ServiceForm = () => {
                 {(serviceTwo.serviceSeats <= 0) ? <p>Service full</p> : <p key={serviceTwo._id}>Seats: {serviceTwo.serviceSeats}</p>}
               </div>
             </Col>
+            <Col lg={3}></Col>
+          </Row>
+          <Row>
+            <Col lg={2}>
+            </Col>
+            <Col>
+              <p className="serviceDate">Tuesday December 24th</p>
+            </Col>
+            <Col lg={2}>
+            </Col>
+          </Row>
+          <Row>
+            <Col lg={2}></Col>
             <Col>
               <div>
                 <p>11:30am</p>
@@ -150,19 +163,6 @@ const ServiceForm = () => {
                 {(serviceThree.serviceSeats <= 0) ? <p>Service full</p> : <p key={serviceThree._id}>Seats: {serviceThree.serviceSeats}</p>}
               </div>
             </Col>
-            <Col lg={2}></Col>
-          </Row>
-          <Row>
-            <Col lg={2}>
-            </Col>
-            <Col>
-              <p className="serviceDate">Tuesday December 24th</p>
-            </Col>
-            <Col lg={2}>
-            </Col>
-          </Row>
-          <Row>
-            <Col lg={2}></Col>
             <Col>
               <div>
                 <p>8:00am</p>
