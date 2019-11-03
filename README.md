@@ -31,8 +31,9 @@ Todo list:
 - [x] Add mailer functionality with my smtp server
 - [x] Handle mongoose on Atlas
 - [x] Deploy on Heroku
-- [ ] Clean up the css
+- [x] Clean up the css
 - [ ] Clean up react code where I can
+- [ ] Refactor and reorganize react code
 - [ ] Handle when database is disconnected or service data is invalid
 
 Future list:
