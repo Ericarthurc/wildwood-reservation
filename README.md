@@ -34,7 +34,7 @@ Todo list:
 - [x] Clean up the css
 - [ ] Clean up react code where I can
 - [ ] Refactor and reorganize react code
-- [ ] Handle when database is disconnected or service data is invalid
+- [ ] Handle when database is disconnected or service data is invalid (React Error Boundary)
 
 Future list:
 
