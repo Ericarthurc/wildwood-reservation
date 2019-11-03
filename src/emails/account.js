@@ -1,25 +1,27 @@
 const nodemailer = require("nodemailer");
 const smtpTransport = require("nodemailer-smtp-transport");
-const chalk = require('chalk')
+const chalk = require("chalk");
 
-const transporter = nodemailer.createTransport(smtpTransport({
+const transporter = nodemailer.createTransport(
+  smtpTransport({
     host: process.env.MAILER_HOST,
     port: 587,
     auth: {
-        user: process.env.MAILER_USER, // my mail
-        pass: process.env.MAILER_PASS
+      user: process.env.MAILER_USER, // my mail
+      pass: process.env.MAILER_PASS
     }
-}));
+  })
+);
 
 const sendSignUpEmail = async (email, name, service, seats) => {
-    try {
-        const mail = await transporter.sendMail({
-            from: '"Wildwood Christmas❄️" <mailer@wildwoodchristmas.com>',
-            to: email,
-            subject: "Wildwood Christmas Services",
-            // text: "That was easy!",
-            html:
-                `
+  const splitService = service.split(" ");
+  try {
+    const mail = await transporter.sendMail({
+      from: '"Wildwood Christmas❄️" <mailer@wildwoodchristmas.com>',
+      to: email,
+      subject: "Wildwood Christmas Services",
+      // text: "That was easy!",
+      html: `
                 <head>
                     <style>
                         * {
@@ -50,14 +52,14 @@ const sendSignUpEmail = async (email, name, service, seats) => {
                     <a href="#"><img class="logo" src="https://static1.squarespace.com/static/55b65b10e4b0c62a632dc7ad/t/5d1a82a115c77500011ee5d3/1570468072312/?format=1500w" alt="image here"></a>
                     <h1>Wildwood Christmas Services</h1>
                     <p>Thank you ${name} for joining Wildwood for our Christmas services!</p>
-                    <p>You selected ${seats} seats for our ${service}. We can't wait to see you there!</p>
+                    <p>You selected ${seats} seats for our ${splitService[0]}'s ${splitService[1]} service. We can't wait to see you there!</p>
                 </body>
                 `
-        })
-        console.log(mail.response)
-    } catch (e) {
-        console.log(e)
-    }
-}
+    });
+    console.log(mail.response);
+  } catch (e) {
+    console.log(e);
+  }
+};
 
-module.exports = sendSignUpEmail
+module.exports = sendSignUpEmail;
