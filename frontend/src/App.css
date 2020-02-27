@@ -1,9 +1,9 @@
 :root {
-  --main-color: #fff491;
-  --secondary-color: #0a84ff;
-  --thirdary-color: #253978;
-  --focus-border: #0a84ff40;
-  --font-color: #000;
+  --main-color: #ede9d3;
+  --secondary-color: #c79f27;
+  --thirdary-color: #d04a1b;
+  --focus-border: #c79f2740;
+  --font-color: #25201f;
   --input-colors: ;
   --border-colors: ;
 }
@@ -99,7 +99,8 @@ select.inputs__control {
 }
 
 .header__logo {
-  filter: invert(1) sepia(0) saturate(0) hue-rotate(0);
+  max-height: 225px;
+  /* filter: invert(1) sepia(0) saturate(0) hue-rotate(0); */
 }
 
 .content__form {
@@ -149,6 +150,11 @@ select.inputs__control {
   .selector__service-seats {
     margin-top: 5px;
   }
+
+  .header__logo {
+    max-height: 175px;
+    /* filter: invert(1) sepia(0) saturate(0) hue-rotate(0); */
+  }
 }
 
 .selector__service-Radio {
@@ -156,7 +162,7 @@ select.inputs__control {
 }
 
 .selector__service-Disabled {
-  color: #3d3d3d;
+  color: var(--font-color);
   -moz-transition: all 0.2s ease-in;
   -o-transition: all 0.2s ease-in;
   -webkit-transition: all 0.2s ease-in;
@@ -183,7 +189,7 @@ select.inputs__control {
 .form__error {
   margin: 0;
   padding: 0;
-  color: red;
+  color: var(--thirdary-color);
   font-weight: bold;
   justify-self: center;
   font-size: 18px;

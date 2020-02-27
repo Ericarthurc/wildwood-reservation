@@ -1,6 +1,7 @@
 {
   "name": "react-web",
-  "version": "0.1.0",
+  "author": "Ericarthurc",
+  "version": "2.0.0",
   "private": true,
   "proxy": "http://localhost:4000",
   "dependencies": {
