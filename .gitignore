@@ -1,4 +1,2 @@
+config/config.env
 node_modules
-config
-vue_frontend
-.vscode

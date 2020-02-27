@@ -1,21 +1,21 @@
 {
-  "name": "frontend",
+  "name": "react-web",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:3000",
+  "proxy": "http://localhost:4000",
   "dependencies": {
-    "@material-ui/core": "^4.4.3",
-    "axios": "^0.19.0",
-    "bootstrap": "^4.3.1",
-    "react": "^16.9.0",
-    "react-bootstrap": "^1.0.0-beta.12",
-    "react-dom": "^16.9.0",
-    "react-icons": "^3.7.0",
-    "react-router-dom": "^4.3.1",
-    "react-scripts": "3.1.1"
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.3",
+    "@testing-library/user-event": "^7.1.2",
+    "axios": "^0.19.1",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-router-dom": "^5.1.2",
+    "react-scripts": "3.3.0",
+    "socket.io-client": "^2.3.0"
   },
   "scripts": {
-    "start": "set PORT=3001 && react-scripts start",
+    "start": "set PORT=4001 && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -34,5 +34,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "devDependencies": {}
 }
