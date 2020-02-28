@@ -8,6 +8,8 @@ const errorHandler = (err, req, res, next) => {
 
   // Log to console for dev
   // console.log(chalk.red(err.stack));
+  // console.log(err.name);
+  // console.log(err);
 
   // Mongoose bad ObjectID
   if (err.name === 'CastError') {
@@ -19,6 +21,12 @@ const errorHandler = (err, req, res, next) => {
   if (err.name == 'ValidationError') {
     const message = `Error!`;
     error = new ErrorResponse(message, 406);
+  }
+
+  // Mongoose Validation Error
+  if (err._message == 'Service validation failed') {
+    const message = `Error!`;
+    error = new ErrorResponse(message, 405);
   }
 
   // Mongoose Duplicate Error

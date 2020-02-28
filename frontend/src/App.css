@@ -40,7 +40,37 @@ input:-webkit-autofill:active {
   box-shadow: 0 0 0 30px white inset !important;
 }
 
-/* CUSTOM */
+/* Disables red border in Firefox and Edge */
+select:invalid {
+  box-shadow: none;
+  outline: none;
+}
+
+select {
+  -webkit-appearance: menulist-button;
+  color: black;
+}
+
+select:invalid {
+  color: gray;
+}
+
+option {
+  color: black;
+}
+
+/* Hide spin button on number input*/
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+/* custom svg font */
 @font-face {
   font-family: 'icomoon';
   src: url('./assets/fonts/icomoon.eot?umppzl');
@@ -92,15 +122,24 @@ select.inputs__control {
 }
 
 .header {
+  display: grid;
   justify-self: center;
   align-self: center;
-  width: 85%;
-  max-width: 500px;
+  gap: 20px;
+  /* width: 85%;
+  max-width: 500px; */
+}
+.header__title {
+  width: 325px;
+  filter: invert(1) sepia(0) saturate(0) hue-rotate(0);
+  justify-self: center;
+  align-self: center;
 }
 
 .header__logo {
-  max-height: 225px;
-  /* filter: invert(1) sepia(0) saturate(0) hue-rotate(0); */
+  height: 150px;
+  justify-self: center;
+  align-self: center;
 }
 
 .content__form {
@@ -151,8 +190,15 @@ select.inputs__control {
     margin-top: 5px;
   }
 
+  .header__title {
+    width: 275px;
+    filter: invert(1) sepia(0) saturate(0) hue-rotate(0);
+    justify-self: center;
+    align-self: center;
+  }
+
   .header__logo {
-    max-height: 175px;
+    height: 100px;
     /* filter: invert(1) sepia(0) saturate(0) hue-rotate(0); */
   }
 }
@@ -193,6 +239,7 @@ select.inputs__control {
   font-weight: bold;
   justify-self: center;
   font-size: 18px;
+  text-align: center;
 }
 
 .form__pass {

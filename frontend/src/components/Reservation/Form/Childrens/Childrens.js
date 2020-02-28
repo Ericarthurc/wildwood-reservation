@@ -13,7 +13,7 @@ const Childrens = () => {
 
   const childrenCounter = (
     <>
-      <select className="inputs__control" defaultValue="">
+      <select className="inputs__control" defaultValue="" required>
         <option value="" disabled>
           How many 0 - 23 months old?
         </option>
@@ -23,7 +23,7 @@ const Childrens = () => {
         <option value="3">3</option>
         <option value="4">4</option>
       </select>
-      <select className="inputs__control" defaultValue="">
+      <select className="inputs__control" defaultValue="" required>
         <option value="" disabled>
           How many 2 year olds?
         </option>
@@ -33,7 +33,7 @@ const Childrens = () => {
         <option value="3">3</option>
         <option value="4">4</option>
       </select>
-      <select className="inputs__control" defaultValue="">
+      <select className="inputs__control" defaultValue="" required>
         <option value="" disabled>
           How many 3 year olds?
         </option>
@@ -43,7 +43,7 @@ const Childrens = () => {
         <option value="3">3</option>
         <option value="4">4</option>
       </select>
-      <select className="inputs__control" defaultValue="">
+      <select className="inputs__control" defaultValue="" required>
         <option value="" disabled>
           How many 4 year olds?
         </option>
@@ -53,7 +53,7 @@ const Childrens = () => {
         <option value="3">3</option>
         <option value="4">4</option>
       </select>
-      <select className="inputs__control" defaultValue="">
+      <select className="inputs__control" defaultValue="" required>
         <option value="" disabled>
           How many 5 year olds/Kindergarten?
         </option>
@@ -63,7 +63,7 @@ const Childrens = () => {
         <option value="3">3</option>
         <option value="4">4</option>
       </select>
-      <select className="inputs__control" defaultValue="">
+      <select className="inputs__control" defaultValue="" required>
         <option value="" disabled>
           How many in 1st - 5th Grade?
         </option>
@@ -83,6 +83,7 @@ const Childrens = () => {
         className="inputs__control"
         placeholder="Enter seats:"
         defaultValue={children}
+        required
       >
         <option value="" disabled>
           Are you bringing children?

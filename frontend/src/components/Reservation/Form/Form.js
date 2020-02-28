@@ -78,6 +78,11 @@ const Form = props => {
           case 406:
             setStatusMessage('Your missing a form input!');
             break;
+          case 405:
+            setStatusMessage(
+              'There is not enough seats available in that service!'
+            );
+            break;
           case 404:
             setStatusMessage('Your missing some form inputs!');
             break;

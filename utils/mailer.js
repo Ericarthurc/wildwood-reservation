@@ -25,20 +25,20 @@ const sendSignUpEmail = async (email, name, service, seats) => {
                     <style>
                         .body {
                             text-align: center;
-                            background-color: #fff491;
+                            background-color: #ede9d3;
                             font: Arial;
                             border-radius: 20px;
                             padding-top: 20px;
                             padding-bottom: 20px;
                         }
                         p {
-                            color: #000000;
+                            color: #25201f;
                             font-size:20px;
                             margin: 0px;
                             padding: 0px;
                         }
                         h1 {
-                            color: #0a84ff;
+                            color: #c79f27;
                             font-size:27px;
                             margin: 0px;
                             padding: 0px;
