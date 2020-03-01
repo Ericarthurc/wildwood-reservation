@@ -198,7 +198,7 @@ select.inputs__control {
   }
 
   .header__logo {
-    height: 100px;
+    height: 125px;
     /* filter: invert(1) sepia(0) saturate(0) hue-rotate(0); */
   }
 }
