@@ -7,9 +7,9 @@ const db = require('../config/db');
 exports.getServices = async (req, res, next) => {
   try {
     const services = await Service.find({});
-    res.status(200).json({ succes: true, data: services });
+    res.status(200).json({ success: true, data: services });
   } catch (error) {
-    res.status(500).json({ succes: false, error });
+    res.status(500).json({ success: false, error });
   }
 };
 
@@ -27,9 +27,9 @@ exports.getService = async (req, res, next) => {
       });
     }
 
-    res.status(200).json({ succes: true, data: service });
+    res.status(200).json({ success: true, data: service });
   } catch (error) {
-    res.status(500).json({ succes: false, error });
+    res.status(500).json({ success: false, error });
   }
 };
 
@@ -42,7 +42,7 @@ exports.createService = async (req, res, next) => {
 
     res.status(200).json({ success: true, data: service });
   } catch (error) {
-    res.status(500).json({ succes: false, error });
+    res.status(500).json({ success: false, error });
   }
 };
 
@@ -57,7 +57,7 @@ exports.updateService = async (req, res, next) => {
     });
 
     if (!service) {
-      res.status(404).json({
+      return res.status(404).json({
         succes: false,
         message: `Service with id: ${req.params.id} not found!`
       });
@@ -65,7 +65,7 @@ exports.updateService = async (req, res, next) => {
 
     res.status(200).json({ success: true, data: service });
   } catch (error) {
-    res.status(500).json({ succes: false, error });
+    res.status(500).json({ success: false, error });
   }
 };
 
@@ -77,7 +77,7 @@ exports.deleteService = async (req, res, next) => {
     const service = await Service.findByIdAndDelete(req.params.id);
 
     if (!service) {
-      res.status(404).json({
+      return res.status(404).json({
         succes: false,
         message: `Service with id: ${req.params.id} not found!`
       });
@@ -85,6 +85,6 @@ exports.deleteService = async (req, res, next) => {
 
     res.status(200).json({ success: true, data: {} });
   } catch (error) {
-    res.status(500).json({ succes: false, error });
+    res.status(500).json({ success: false, error });
   }
 };

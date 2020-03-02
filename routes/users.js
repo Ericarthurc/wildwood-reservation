@@ -7,17 +7,20 @@ const {
   deleteUser
 } = require('../controllers/users');
 
+// Middleware
+const authentication = require('../middleware/authentication');
+
 const router = new express.Router();
 
 router
   .route('/')
-  .get(getUsers)
+  .get(authentication, getUsers)
   .post(createUser);
 
 router
   .route('/:id')
-  .get(getUser)
-  .patch(updateUser)
-  .delete(deleteUser);
+  .get(authentication, getUser)
+  .patch(authentication, updateUser)
+  .delete(authentication, deleteUser);
 
 module.exports = router;
