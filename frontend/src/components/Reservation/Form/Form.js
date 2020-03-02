@@ -8,10 +8,11 @@ import Childrens from './Childrens/Childrens';
 
 const Form = props => {
   const [database, setDatabase] = useState([]);
-  const [selectedService, setSelectedService] = useState('');
-
   const [statusMessage, setStatusMessage] = useState('');
   const [statusClass, setStatusClass] = useState('form__error');
+
+  // Form controlled state
+  const [selectedService, setSelectedService] = useState('');
 
   useEffect(() => {
     getDatabase();
@@ -48,6 +49,7 @@ const Form = props => {
     }
 
     try {
+      event.persist();
       await axios.post('/api/v2/users', {
         serviceName: ss.name,
         serviceId: ss._id,
@@ -65,7 +67,10 @@ const Form = props => {
 
       setStatusClass('form__pass');
       setStatusMessage('Successfully Submitted!');
+      event.target.reset();
+      setSelectedService('');
     } catch (error) {
+      console.log('ERROR', error);
       setStatusClass('form__error');
       try {
         switch (error.response.status) {

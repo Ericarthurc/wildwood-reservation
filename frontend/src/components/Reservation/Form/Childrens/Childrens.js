@@ -78,6 +78,9 @@ const Childrens = () => {
 
   return (
     <>
+      <p className="inputs__notice">
+        Six Graders and up will attend Main Service
+      </p>
       <select
         onChange={childrenHandler}
         className="inputs__control"

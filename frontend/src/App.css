@@ -259,6 +259,10 @@ select.inputs__control {
   justify-self: center;
   align-self: center;
   gap: 10px;
+  text-align: center;
+}
+
+.inputs__notice {
 }
 
 .inputs__control {
